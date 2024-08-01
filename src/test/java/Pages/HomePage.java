@@ -8,7 +8,7 @@ public class HomePage extends BasePage {
 
     private String pageURL = "https://masif.ro/";
     private String loginPageIconSelector = "my-account";
-    private String wishlistPageIconSelector = "my-wishlist";
+    private String registrationPageIconSelector = "/customer/account/create/";
     public HomePage(WebDriver driver) {
         super(driver);
     }
@@ -19,6 +19,10 @@ public class HomePage extends BasePage {
 
     public void goToLoginPage() {
         driver.findElement(By.className(loginPageIconSelector)).click();
+    }
+
+    public void goToRegistrationPage() {
+        driver.findElement(By.className(registrationPageIconSelector)).click();
     }
 
 }

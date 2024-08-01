@@ -3,24 +3,18 @@ package Pages;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.interactions.Actions;
 import org.testng.Assert;
-
-import java.util.List;
 
 //Page Object Model design pattern
 public class LoginPage extends HomePage {
 
     private String pageURL = "https://masif.ro/customer/account/login/";
-
-    private String usernameLabelSelector = "field email special required"; //class
-    private String passwordLabelSelector = "field password special required"; //class
-    private String usernameInputSelector = "#email"; //id
-    private String passwordInputSelector = "password"; //id
-    private String submitButtonSelector = "actions-toolbar"; //class
-    private String checkboxSelector = "#remember-me-box"; //id
-    private String usernameErrorSelector = "error";
-    private String loginErrorSelector = "#maincontent > div.page.messages > div:nth-child(2) > div > div";
-    private By checkboxName = By.cssSelector("#remember-me-box");
+    private String usernameInputSelector = "login[username]"; //name
+    private String passwordInputSelector = "login[password]"; //name
+    private String submitButtonSelector = "#login-form > fieldset > div.actions-toolbar > div.primary"; //css
+    private String loginErrorSelector = "#maincontent > div.page.messages > div:nth-child(2) > div"; //css
+    private By checkboxNameSelector = By.cssSelector("#remember-me-box");
     private By checkboxButton = By.className("checkbox");
 
 
@@ -31,28 +25,47 @@ public class LoginPage extends HomePage {
         System.out.println("Page URL is: " + getPageURL());
         Assert.assertEquals(getPageURL(), pageURL);
     }
-    public void verifyIfCheckboxIsDisplayed() {
-        Assert.assertTrue(getCheckboxButton().isDisplayed()); //assert if checkbox is displayed
+    private WebElement getCheckboxNameSelector(){
+        return driver.findElement(checkboxNameSelector);
+    }
+    public void isCheckboxIsDisplayed() {
+        Assert.assertTrue(getCheckboxNameSelector().isDisplayed()); //assert if checkbox is displayed
+    }
+    private String getUsernameInputElement() {
+        return driver.findElement(By.tagName("login[password]")).getText();
     }
 
-    private WebElement getCheckboxButton(){
-        return driver.findElement(checkboxName);
+    public void clickCheckbox() {
+        WebElement checkbox = getCheckboxNameSelector();
+        Actions actions = new Actions(driver);
+        actions.click(checkbox).build().perform();
     }
 
     public void login(String username, String password) {
-        WebElement usernameInput = driver.findElement(By.id(usernameInputSelector));
-        WebElement passwordInput = driver.findElement(By.id(passwordInputSelector));
-        WebElement submitButton = driver.findElement(By.id(submitButtonSelector));
+        WebElement usernameInput = driver.findElement(By.name(usernameInputSelector));
+        WebElement passwordInput = driver.findElement(By.name(passwordInputSelector));
+        WebElement submitButton = driver.findElement(By.cssSelector(submitButtonSelector));
 
         usernameInput.clear();
         usernameInput.sendKeys(username);
         passwordInput.clear();
         passwordInput.sendKeys(password);
+//        clickCheckbox();
         submitButton.click();
     }
-    public void clickCheckbox() {
-        getCheckboxButton().click();
+
+    public WebElement getLoginErrorSelector() {
+        return driver.findElement(By.cssSelector(loginErrorSelector));
     }
+    public void isLoginErrorDisplayed() {
+        Assert.assertTrue(getLoginErrorSelector().isDisplayed());
+        String loginErrorMessage = "Contul cu care ai încercat să te autentifici e incorect sau a fost dezactivat temporar. Te rugăm să aștepți și să încerci mai târziu.";
+        Assert.assertEquals(getLoginErrorSelector().getText(),loginErrorMessage);
+    }
+
+
+
+
 
 
 
