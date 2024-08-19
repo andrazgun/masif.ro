@@ -26,6 +26,12 @@ public class GenericUtils {
         return rs;
     }
 
+    public static String createRandomEmail(int stringLength) {
+        String randomEmail = RandomStringUtils.randomAlphanumeric(stringLength) + "@yopmail.com";
+        System.out.println(randomEmail);
+        return randomEmail;
+    }
+
     public static String createBaseUrl (String configFile) { //url from config
         String urlBase = "";
         try {

@@ -16,6 +16,9 @@
         <testNGVersion>7.10.2</testNGVersion>
         <webdriverManagerVersion>5.8.0</webdriverManagerVersion>
         <seleniumJavaVersion>4.23.0</seleniumJavaVersion>
+        <surefireVersion>3.3.1</surefireVersion>
+        <xmlSmokeSuite>masifSmokeSuite.xml</xmlSmokeSuite>
+        <xmlRegressionSuite>masifRegressionSuite.xml</xmlRegressionSuite>
     </properties>
 
     <dependencies>
@@ -46,9 +49,24 @@
             <version>${seleniumJavaVersion}</version>
         </dependency>
 
-
-
-
     </dependencies>
+
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-surefire-plugin</artifactId>
+                <version>${surefireVersion}</version>
+                <configuration>
+                    <suiteXmlFiles>
+                        <suiteXmlFile>
+                            ${xmlSmokeSuite}
+                            ${xmlRegressionSuite}
+                        </suiteXmlFile>
+                    </suiteXmlFiles>
+                </configuration>
+            </plugin>
+        </plugins>
+    </build>
 
 </project>

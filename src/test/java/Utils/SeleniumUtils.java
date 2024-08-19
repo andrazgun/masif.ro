@@ -48,6 +48,9 @@ public class SeleniumUtils {
             System.out.println("File not saved");
         }
     }
+    public static void implicitWait(WebDriver driver, Integer seconds) {
+        driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(seconds));
+    }
 
 
 }

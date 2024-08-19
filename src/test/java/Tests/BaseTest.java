@@ -1,27 +1,33 @@
 package Tests;
 
-import Utils.BrowserUtils;
-import Utils.ConstantUtils;
-import Utils.GenericUtils;
+import Utils.*;
 import org.openqa.selenium.WebDriver;
-import org.testng.annotations.AfterTest;
-import org.testng.annotations.BeforeTest;
+import org.testng.annotations.*;
 import java.time.Duration;
 
 public class BaseTest {
-    public WebDriver driver;
     String browser = GenericUtils.getBrowserFromConfig(ConstantUtils.CONFIG_FILE);
+    public WebDriver driver = WebDriverFactory.getDriver(browser);
     String baseUrl = GenericUtils.createBaseUrl(ConstantUtils.CONFIG_FILE);
+    String dbHostname, dbPort, dbUser, dbPassword, dbSchema;
 
     @BeforeTest
+//            (
+//            groups = {"Smoke","Regression"}
+//            )
     public void beforeTest() {
         System.out.println(baseUrl);
-        driver = BrowserUtils.getBrowser(browser, ConstantUtils.CONFIG_FILE);
-//        driver = BrowserUtils.getBrowser(BrowserTypes.CHROME).getDriver(); //another way to initialize the browser type
+        dbHostname = ConfigUtils.getGenericValue(ConstantUtils.CONFIG_FILE, "dbHostname","");
+        dbUser = ConfigUtils.getGenericValue(ConstantUtils.CONFIG_FILE, "dbUser","");
+        dbPassword = ConfigUtils.getGenericValue(ConstantUtils.CONFIG_FILE, "dbPassword","");
+        dbPort = ConfigUtils.getGenericValue(ConstantUtils.CONFIG_FILE, "dbPort","");
+        dbSchema = ConfigUtils.getGenericValue(ConstantUtils.CONFIG_FILE, "dbSchema","");
         driver.manage().window().maximize();
-        driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(3));
-
-
+        driver.manage().deleteAllCookies();
+//        driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(3));
+    }
+    public void implicitWait() {
+        driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(5));
     }
 
     @AfterTest(enabled = false)
