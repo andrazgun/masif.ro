@@ -8,7 +8,7 @@ import java.time.Duration;
 public class BaseTest {
     public static String browser = GenericUtils.getBrowserFromConfig(ConstantUtils.CONFIG_FILE);
     public static WebDriver driver = WebDriverFactory.getDriver(browser);
-    String baseUrl = GenericUtils.createBaseUrl(ConstantUtils.CONFIG_FILE);
+    public String baseUrl = GenericUtils.createBaseUrl(ConstantUtils.CONFIG_FILE);
     String dbHostname, dbPort, dbUser, dbPassword, dbSchema;
 
     @BeforeTest

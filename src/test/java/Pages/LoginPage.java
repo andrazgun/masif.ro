@@ -72,4 +72,19 @@ public class LoginPage extends BasePage {
         return driver.findElement(By.id(emailErrorSelector)).getText();
     }
 
+
+    public boolean checkErr(String expectedErr, String errorType) {
+        if (errorType.equalsIgnoreCase("userErr")) {
+            if (expectedErr.length() > 0) { // if text is displayed, execute if code block
+                System.out.println("Actual user error:" + getEmailErrorSelectorText());
+                return expectedErr.equals(getEmailErrorSelectorText());
+            } else return true;
+        } else if (errorType.equalsIgnoreCase("passErr")) {
+            if (expectedErr.length() > 0) {
+                System.out.println("Actual pass error:" + getPasswordErrorSelectorText());
+                return expectedErr.equalsIgnoreCase(getPasswordErrorSelectorText());
+            } else return true;
+        }
+        return false;
+    }
 }
