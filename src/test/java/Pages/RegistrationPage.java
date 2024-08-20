@@ -1,12 +1,12 @@
 package Pages;
 
-import Utils.SeleniumUtils;
 import org.openqa.selenium.By;
-import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
-import org.openqa.selenium.interactions.Actions;
 import org.testng.Assert;
+
+import static Utils.BrowserUtils.*;
+import static Utils.SeleniumUtils.implicitWait;
 
 public class RegistrationPage extends BasePage {
 
@@ -17,9 +17,13 @@ public class RegistrationPage extends BasePage {
     private String emailInputSelector = "email_address";
     private String passwordInputSelector = "password";
     private String passwordAgainInputSelector = "password-confirmation";
-    private String passwordErrorMessageSelector = "password-error";
-    private String passwordAgainErrorMessageSelector = "password-confirmation-error";
-    private String submitButtonSelector = "//*[@class=\"create-account-container\"]//*[@class=\"primary\"]";
+    private String firstNameErrorSelector = "firstname-error"; //id
+    private String lastNameErrorSelector = "lastname-error"; //id
+    private String emailErrorSelector = "email_address-error"; //id
+    private String passwordErrorSelector = "password-error";
+    private String passwordConfirmationErrorSelector = "password-confirmation-error";
+//    private String submitButtonSelector = "//*[@class=\"create-account-container\"]//*[@class=\"primary\"]"; //xpath
+    private String submitButtonSelector = "#form-validate > div.actions-toolbar"; //css
     private String goToLoginPage = "Intra in cont aici";
     String createAccountErrorSelector;
     String createAccountSuccessSelector;
@@ -51,8 +55,6 @@ public class RegistrationPage extends BasePage {
         WebElement passwordInputElement = driver.findElement(By.id(passwordInputSelector));
         WebElement passwordAgainInputElement = driver.findElement(By.id(passwordAgainInputSelector));
 
-        WebElement submitButtonElement = driver.findElement(By.xpath(submitButtonSelector));
-
         firstnameElement.clear();
         firstnameElement.sendKeys(firstName);
         lastNameElement.clear();
@@ -63,36 +65,29 @@ public class RegistrationPage extends BasePage {
         passwordInputElement.sendKeys(password);
         passwordAgainInputElement.clear();
         passwordAgainInputElement.sendKeys(passwordAgain);
-        body.sendKeys(Keys.PAGE_DOWN);
-        SeleniumUtils.implicitWait(driver, 3);
-
-
-        Actions actions = new Actions(driver);
-        actions.moveToElement(submitButtonElement).click();
-
-//        submitButtonElement.click();
-//        SeleniumUtils.implicitWait(driver, 3);
-
+//        body.sendKeys(Keys.PAGE_DOWN);
+        clickSubmitButtonByCss(submitButtonSelector);
+        implicitWait(driver, 5);
     }
-    public WebElement getPasswordErrorSelector() {
-        return driver.findElement(By.id(passwordErrorMessageSelector));
+    public String getFirstnameErrorText() {
+        WebElement firstnameErrorElement = driver.findElement(By.id(firstNameErrorSelector));
+        return firstnameErrorElement.getText();
     }
-    public String getPasswordAgainErrorText() {
-        return driver.findElement(By.id(passwordAgainInputSelector)).getText();
+    public String getLastnameErrorText() {
+        WebElement lastnameErrorElement = driver.findElement(By.id(lastNameErrorSelector));
+        return lastnameErrorElement.getText();
     }
-
-    public WebElement getCreateAccountErrorSelector() {
-        return driver.findElement(By.cssSelector(createAccountErrorSelector));
+    public String getEmailErrorText() {
+        WebElement emailErrorElement = driver.findElement(By.id(emailErrorSelector));
+        return emailErrorElement.getText();
     }
-    public void isCreateAccountErrorDisplayed() {
-        Assert.assertTrue(getCreateAccountErrorSelector().isDisplayed());
-        String loginErrorMessage = "";
-        Assert.assertEquals(getCreateAccountErrorSelector().getText(),loginErrorMessage);
+    public String getPasswordErrorText() {
+        WebElement passwordErrorElement = driver.findElement(By.id(passwordErrorSelector));
+        return passwordErrorElement.getText();
     }
-
-    public String getCreateAccountSuccessSelector() {
-        return driver.findElement(By.cssSelector(createAccountSuccessSelector)).getText();
+    public String getPasswordConfirmationErrorText() {
+        WebElement passwordErrorText = driver.findElement(By.id(passwordConfirmationErrorSelector));
+        return passwordErrorText.getText();
     }
-
 
 }

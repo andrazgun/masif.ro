@@ -1,5 +1,6 @@
 package Pages;
 
+import Utils.BrowserUtils;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -7,6 +8,9 @@ import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.PageFactory;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.Assert;
+
+import static Utils.BrowserUtils.clickSubmitButtonByCss;
+import static Utils.SeleniumUtils.implicitWait;
 
 //Page Object Model design pattern
 public class LoginPage extends BasePage {
@@ -43,15 +47,15 @@ public class LoginPage extends BasePage {
     public void login(String username, String password) {
         WebElement usernameInput = driver.findElement(By.name(usernameInputSelector));
         WebElement passwordInput = driver.findElement(By.name(passwordInputSelector));
-        WebElement submitButton = driver.findElement(By.cssSelector(submitButtonSelector));
 
         usernameInput.clear();
         usernameInput.sendKeys(username);
         passwordInput.clear();
         passwordInput.sendKeys(password);
 //        clickCheckbox();
-        submitButton.submit();
+        clickSubmitButtonByCss(submitButtonSelector);
     }
+
     public String getLoginErrorSelectorText() {
         return driver.findElement(By.cssSelector(loginErrorSelector)).getText();
     }

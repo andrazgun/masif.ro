@@ -1,6 +1,7 @@
 package Utils;
 
 import io.github.bonigarcia.wdm.WebDriverManager;
+import org.openqa.selenium.By;
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -10,10 +11,14 @@ import org.openqa.selenium.edge.EdgeDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.firefox.FirefoxOptions;
 import org.openqa.selenium.firefox.FirefoxProfile;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
 
+import java.time.Duration;
 import java.util.HashMap;
 import java.util.Map;
 
+import static Tests.BaseTest.driver;
 import static Utils.BrowserTypes.*;
 
 public class BrowserUtils {
@@ -86,10 +91,28 @@ public class BrowserUtils {
 
     }
 
-//    public void scrollToElement(WebElement element) {
-//        JavascriptExecutor js = (JavascriptExecutor) driver;
-//        js.executeScript("arguments[0].scrollIntoView(true);", element);
-//    }
+    public static void scrollToElement(WebElement element) {
+        JavascriptExecutor js = (JavascriptExecutor) driver;
+        js.executeScript("arguments[0].scrollIntoView(true);", element);
+    }
+
+    public static void waitUntilElementIsClickable(WebElement element) {
+        scrollToElement(element);
+        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(3));
+        wait.until(ExpectedConditions.elementToBeClickable(element));
+    }
+
+    public static void waitUntilElementIsVisible(WebElement element) {
+        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(5));
+        wait.until(ExpectedConditions.visibilityOf(element));
+    }
+    public static void clickSubmitButtonByCss(String css) {
+        WebElement submitButton = driver.findElement(By.cssSelector(css));
+        waitUntilElementIsClickable(submitButton);
+        submitButton.submit();
+    }
+
+
 
 
 }

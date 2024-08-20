@@ -6,8 +6,8 @@ import org.testng.annotations.*;
 import java.time.Duration;
 
 public class BaseTest {
-    String browser = GenericUtils.getBrowserFromConfig(ConstantUtils.CONFIG_FILE);
-    public WebDriver driver = WebDriverFactory.getDriver(browser);
+    public static String browser = GenericUtils.getBrowserFromConfig(ConstantUtils.CONFIG_FILE);
+    public static WebDriver driver = WebDriverFactory.getDriver(browser);
     String baseUrl = GenericUtils.createBaseUrl(ConstantUtils.CONFIG_FILE);
     String dbHostname, dbPort, dbUser, dbPassword, dbSchema;
 
