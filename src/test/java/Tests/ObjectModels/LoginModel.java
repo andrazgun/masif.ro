@@ -17,7 +17,6 @@ public class LoginModel {
         this.emailError = emailError;
         this.passwordError = passwordError;
     }
-
     public AccountModel getAccount() {return account;}
     public String getEmailError() {return emailError;}
     public void setEmailError(String emailError) {this.emailError = emailError;}
@@ -27,7 +26,7 @@ public class LoginModel {
     @Override
     public String toString() {
         return "LoginData{" +
-                "account={email:" + account.getEmail() + ",password:" + account.getPassword() +
+                "account={email: " + account.getEmail() + ",password: " + account.getPassword() +
                 "}, emailError='" + emailError + '\'' +
                 ", passwordError='" + passwordError + '\'' +
                 '}';

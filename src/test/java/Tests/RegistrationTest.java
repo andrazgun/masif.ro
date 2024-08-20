@@ -5,14 +5,11 @@ import Utils.GenericUtils;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 
-
 public class RegistrationTest extends BaseTest {
     @Test
     public void RegistrationBasicTest() {
-
-        driver.get(baseUrl + "/customer/account/create/");
-
         RegistrationPage registrationPage = new RegistrationPage(driver);
+        driver.get(baseUrl + registrationPage.setPagePath());
         registrationPage.verifyPageURL();
         registrationPage.verifyPageTitle();
         registrationPage.createAccount(
@@ -24,13 +21,10 @@ public class RegistrationTest extends BaseTest {
                 );
         Assert.assertEquals(registrationPage.getPasswordConfirmationErrorText(),"Adauga aceasi valoare din nou.");
     }
-
     @Test
     public void RegistrationTest01() {
-
-        driver.get(baseUrl + "/customer/account/create/");
-
         RegistrationPage registrationPage = new RegistrationPage(driver);
+        driver.get(baseUrl + registrationPage.setPagePath());
         registrationPage.verifyPageURL();
         registrationPage.verifyPageTitle();
         registrationPage.createAccount(
@@ -42,12 +36,14 @@ public class RegistrationTest extends BaseTest {
         );
         Assert.assertEquals(registrationPage.getPasswordConfirmationErrorText(),"Adauga aceasi valoare din nou.");
     }
-    @Test
+    @Test(
+            description = "Negative registration test with empty email, empty password",
+            enabled = true,
+            groups = {"Smoke"}
+    )
     public void RegistrationTest02() {
-
-        driver.get(baseUrl + "/customer/account/create/");
-
         RegistrationPage registrationPage = new RegistrationPage(driver);
+        driver.get(baseUrl + registrationPage.setPagePath());
         registrationPage.verifyPageURL();
         registrationPage.verifyPageTitle();
         registrationPage.createAccount(
@@ -64,7 +60,5 @@ public class RegistrationTest extends BaseTest {
         Assert.assertEquals(registrationPage.getPasswordErrorText(),"Acesta este un câmp obligatoriu.");
         Assert.assertEquals(registrationPage.getPasswordConfirmationErrorText(),"Acesta este un câmp obligatoriu.");
     }
-
-
 
 }

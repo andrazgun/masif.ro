@@ -1,20 +1,16 @@
 package Pages;
 
-import Utils.BrowserUtils;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.interactions.Actions;
-import org.openqa.selenium.support.PageFactory;
-import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.Assert;
 
 import static Utils.BrowserUtils.clickSubmitButtonByCss;
-import static Utils.SeleniumUtils.implicitWait;
 
 //Page Object Model design pattern
 public class LoginPage extends BasePage {
-
+    private final String pagePath = "/customer/account/login/";
     private String pageURL = "https://masif.ro/customer/account/login/";
     private String usernameInputSelector = "login[username]"; //name
     private String passwordInputSelector = "login[password]"; //name
@@ -30,6 +26,9 @@ public class LoginPage extends BasePage {
     public LoginPage(WebDriver driver)
     {
         super(driver);
+    }
+    public String setPagePath() {
+        return this.pagePath;
     }
     @Override
     public void verifyPageURL() {
@@ -72,11 +71,10 @@ public class LoginPage extends BasePage {
         return driver.findElement(By.id(emailErrorSelector)).getText();
     }
 
-
     public boolean checkErr(String expectedErr, String errorType) {
-        if (errorType.equalsIgnoreCase("userErr")) {
+        if (errorType.equalsIgnoreCase("emailErr")) {
             if (expectedErr.length() > 0) { // if text is displayed, execute if code block
-                System.out.println("Actual user error:" + getEmailErrorSelectorText());
+                System.out.println("Actual email error:" + getEmailErrorSelectorText());
                 return expectedErr.equals(getEmailErrorSelectorText());
             } else return true;
         } else if (errorType.equalsIgnoreCase("passErr")) {

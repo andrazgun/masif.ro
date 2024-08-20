@@ -14,6 +14,7 @@
                     <include name="getParamsFromCmd"/>
                 </methods>
             </class>
+            <class name="Tests.RegistrationTest"/>
         </classes>
     </test>
 

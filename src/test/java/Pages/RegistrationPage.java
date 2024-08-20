@@ -4,12 +4,11 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.testng.Assert;
-
 import static Utils.BrowserUtils.*;
 import static Utils.SeleniumUtils.implicitWait;
 
 public class RegistrationPage extends BasePage {
-
+    private final String pagePath = "/customer/account/create/";
     private String pageURL = "https://masif.ro/customer/account/create/";
     private String pageTitle = "Creeaza-ti cont | MASIF";
     private String firstNameInputSelector = "firstname"; //id
@@ -32,6 +31,9 @@ public class RegistrationPage extends BasePage {
     public RegistrationPage(WebDriver driver) {
         super(driver);
     }
+    public String setPagePath() {
+        return this.pagePath;
+    }
     public void verifyPageURL() {
         System.out.println("Page URL is: " + getPageURL());
         Assert.assertEquals(getPageURL(), pageURL);
@@ -43,6 +45,7 @@ public class RegistrationPage extends BasePage {
         System.out.println("Page title is: " + getPageTitle());
         Assert.assertEquals(getPageTitle(), pageTitle);
     }
+
     public void createAccount(String firstName,
                               String lastName,
                               String email,

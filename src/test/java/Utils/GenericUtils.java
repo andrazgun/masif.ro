@@ -56,5 +56,4 @@ public class GenericUtils {
         return Boolean.parseBoolean(ConfigUtils.getGenericValue(configFile, "downloadDirectoryEnabled", "false"));
     }
 
-
 }

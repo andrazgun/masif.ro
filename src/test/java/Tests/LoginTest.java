@@ -30,12 +30,10 @@ public class LoginTest extends BaseTest {
             groups = {"Smoke"}
     )
     public void LoginTestWithDataProvider(String username, String password, String assertMessage) {
-
         driver.get(baseUrl);
         HomePage homePage = new HomePage(driver);
         homePage.verifyPageURL();
         homePage.goToLoginPage();
-
         LoginPage loginPage = new LoginPage(driver);
         loginPage.verifyPageURL();
         Assert.assertTrue(loginPage.getCheckboxNameSelector().isDisplayed());
@@ -49,12 +47,10 @@ public class LoginTest extends BaseTest {
             groups = {"Regression"}
     )
     public void LoginNegativeTest01() {
-
         driver.get(baseUrl);
         HomePage homePage = new HomePage(driver);
         homePage.verifyPageURL();
         homePage.goToLoginPage();
-
         LoginPage loginPage = new LoginPage(driver);
         loginPage.verifyPageURL();
         Assert.assertTrue(loginPage.getCheckboxNameSelector().isDisplayed());
@@ -66,12 +62,10 @@ public class LoginTest extends BaseTest {
             groups = {"Regression"}
     )
     public void LoginNegativeTest02() {
-
         driver.get(baseUrl);
         HomePage homePage = new HomePage(driver);
         homePage.verifyPageURL();
         homePage.goToLoginPage();
-
         LoginPage loginPage = new LoginPage(driver);
         loginPage.verifyPageURL();
         Assert.assertTrue(loginPage.getCheckboxNameSelector().isDisplayed());
@@ -86,12 +80,10 @@ public class LoginTest extends BaseTest {
             groups = {"Regression"}
     )
     public void LoginNegativeTest03() {
-
         driver.get(baseUrl);
         HomePage homePage = new HomePage(driver);
         homePage.verifyPageURL();
         homePage.goToLoginPage();
-
         LoginPage loginPage = new LoginPage(driver);
         loginPage.verifyPageURL();
         Assert.assertTrue(loginPage.getCheckboxNameSelector().isDisplayed());
@@ -104,12 +96,10 @@ public class LoginTest extends BaseTest {
             groups = {"Regression"}
     )
     public void LoginNegativeTest04() {
-
         driver.get(baseUrl);
         HomePage homePage = new HomePage(driver);
         homePage.verifyPageURL();
         homePage.goToLoginPage();
-
         LoginPage loginPage = new LoginPage(driver);
         loginPage.verifyPageURL();
         Assert.assertTrue(loginPage.getCheckboxNameSelector().isDisplayed());
@@ -117,14 +107,12 @@ public class LoginTest extends BaseTest {
         System.out.println("Login error message is: " + loginPage.getLoginErrorSelectorText());
         Assert.assertEquals(loginPage.getLoginErrorSelectorText(), "Contul cu care ai încercat să te autentifici e incorect sau a fost dezactivat temporar. Te rugăm să aștepți și să încerci mai târziu.");
     }
-
     @Test (
             enabled = false,
             groups = {"Smoke"},
             dependsOnGroups = {"Regression"}
     )
     public void LoginPositiveTest() {
-
         driver.get(baseUrl);
         HomePage homePage = new HomePage(driver);
         homePage.verifyPageURL();

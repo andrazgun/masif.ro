@@ -7,7 +7,6 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import org.testng.Assert;
 import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
-
 import java.io.File;
 import java.io.IOException;
 import java.util.ArrayList;
@@ -51,7 +50,8 @@ public class LoginDataTests extends BaseTest {
 
 //        open login page
         System.out.println("Open login page");
-        driver.get(baseUrl + "/customer/account/login/");
+        driver.get(baseUrl + loginPage.setPagePath());
+        System.out.println(baseUrl + loginPage.setPagePath());
 
 //        login
     loginPage.login(lm.getAccount().getEmail(), lm.getAccount().getPassword()); //getter from LoginModel and from AccountModel
@@ -65,6 +65,5 @@ public class LoginDataTests extends BaseTest {
         System.out.println("Expected password error:" + expectedPassErr);
         Assert.assertTrue(loginPage.checkErr(expectedPassErr, "passErr"));
     }
-
 
 }

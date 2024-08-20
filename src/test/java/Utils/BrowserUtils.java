@@ -13,16 +13,12 @@ import org.openqa.selenium.firefox.FirefoxOptions;
 import org.openqa.selenium.firefox.FirefoxProfile;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
-
 import java.time.Duration;
 import java.util.HashMap;
 import java.util.Map;
-
 import static Tests.BaseTest.driver;
-import static Utils.BrowserTypes.*;
 
 public class BrowserUtils {
-
     public static WebDriver getBrowser(String browser) {
         switch (browser.toLowerCase()) {
             case "chrome" : {
@@ -111,8 +107,5 @@ public class BrowserUtils {
         waitUntilElementIsClickable(submitButton);
         submitButton.submit();
     }
-
-
-
 
 }

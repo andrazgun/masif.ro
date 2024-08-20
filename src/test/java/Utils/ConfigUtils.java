@@ -1,8 +1,5 @@
 package Utils;
 
-import org.openqa.selenium.WebDriver;
-import org.testng.Assert;
-
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.util.Properties;
