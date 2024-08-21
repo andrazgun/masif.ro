@@ -5,17 +5,17 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.testng.Assert;
 
-import static Utils.BrowserUtils.clickSubmitButtonByCss;
+import static Utils.BrowserUtils.submitButtonByCss;
 
 public class AccountEditPage extends BasePage {
     private final String pagePath = "/customer/account/edit/";
     private String pageURL = "https://masif.ro/customer/account/edit/";
     private String firstNameSelector = "firstname"; //id
     private String lastNameSelector = "lastname"; //id
+    private String saveButtonSelector = "#form-validate > div > div.primary > button"; //css
     public AccountEditPage(WebDriver driver) {
         super(driver);
     }
-    private String saveButtonSelector = "#form-validate > div > div.primary > button"; //css
     public String setPagePath() {
         return this.pagePath;
     }
@@ -32,6 +32,6 @@ public class AccountEditPage extends BasePage {
         firstNameInput.sendKeys(firstName);
         lastNameInput.clear();
         lastNameInput.sendKeys(lastName);
-        clickSubmitButtonByCss(saveButtonSelector);
+        submitButtonByCss(saveButtonSelector);
     }
 }

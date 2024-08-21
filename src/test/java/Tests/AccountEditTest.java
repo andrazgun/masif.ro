@@ -11,6 +11,7 @@ import org.testng.annotations.Test;
 public class AccountEditTest extends BaseTest {
     @Test(
             description = "Edit firstName and lastName",
+//            enabled = false,
             groups = {"Regression"}
     )
     public void AccountEditTest01() {

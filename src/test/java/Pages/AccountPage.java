@@ -2,10 +2,7 @@ package Pages;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.WebElement;
 import org.testng.Assert;
-
-import static Utils.BrowserUtils.clickSubmitButtonByCss;
 
 public class AccountPage extends BasePage {
     private final String pagePath = "/customer/account/";

@@ -87,13 +87,17 @@ public class BrowserUtils {
 
     }
 
-    public static void scrollToElement(WebElement element) {
+    public static void scrollIntoView(WebElement element) {
         JavascriptExecutor js = (JavascriptExecutor) driver;
         js.executeScript("arguments[0].scrollIntoView(true);", element);
     }
+    public static void scrollScreenDown() {
+        JavascriptExecutor js = (JavascriptExecutor) driver;
+        js.executeScript("window.scrollBy(0, document.documentElement.clientHeight)");
+    }
 
     public static void waitUntilElementIsClickable(WebElement element) {
-        scrollToElement(element);
+        scrollIntoView(element);
         WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(3));
         wait.until(ExpectedConditions.elementToBeClickable(element));
     }
@@ -102,7 +106,7 @@ public class BrowserUtils {
         WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(5));
         wait.until(ExpectedConditions.visibilityOf(element));
     }
-    public static void clickSubmitButtonByCss(String css) {
+    public static void submitButtonByCss(String css) {
         WebElement submitButton = driver.findElement(By.cssSelector(css));
         waitUntilElementIsClickable(submitButton);
         submitButton.submit();
