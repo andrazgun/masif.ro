@@ -102,7 +102,7 @@ public class BrowserUtils {
         WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(5));
         wait.until(ExpectedConditions.visibilityOf(element));
     }
-    public static void clickSubmitButtonByCss(String css) {
+    public static void submitButtonByCss(String css) {
         WebElement submitButton = driver.findElement(By.cssSelector(css));
         waitUntilElementIsClickable(submitButton);
         submitButton.submit();

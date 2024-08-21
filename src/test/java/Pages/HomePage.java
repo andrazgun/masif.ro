@@ -6,7 +6,10 @@ import org.testng.Assert;
 
 public class HomePage extends BasePage {
     private String pageURL = "https://masif.ro/";
-    private String loginPageIconSelector = "my-account";
+    private String loginPageIconSelector = "my-account"; //id
+    private String wishlistPageIconSelector = "my-wishlist"; //id
+    private String productsNavigationSelector = "nav-trigger"; //class
+    private String electricToolsSelector = "#html-body > div.page-wrapper > header > div.page-navigation > div > div > div.col-xs-12.col-sm-3.col-md-3.col-lg-2.left-navigation > nav > ul > li.main-menu__item.main-menu__item--parent.scule-electrice.column3.image.parent--level0 > a"; //css
     public HomePage(WebDriver driver) {
         super(driver);
     }
@@ -17,6 +20,15 @@ public class HomePage extends BasePage {
     }
     public void goToLoginPage() {
         driver.findElement(By.className(loginPageIconSelector)).click();
+    }
+    public void goToWishlistPage() {
+        driver.findElement(By.className(wishlistPageIconSelector)).click();
+    }
+    public void goToProductsNavigation() {
+        driver.findElement(By.className(productsNavigationSelector)).click();
+    }
+    public void goToElectricTools() {
+        driver.findElement(By.cssSelector(electricToolsSelector)).click();
     }
 
 }

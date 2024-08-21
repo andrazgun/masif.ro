@@ -69,7 +69,7 @@ public class RegistrationPage extends BasePage {
         passwordAgainInputElement.clear();
         passwordAgainInputElement.sendKeys(passwordAgain);
 //        body.sendKeys(Keys.PAGE_DOWN);
-        clickSubmitButtonByCss(submitButtonSelector);
+        submitButtonByCss(submitButtonSelector);
         implicitWait(driver, 5);
     }
     public String getFirstnameErrorText() {

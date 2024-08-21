@@ -6,7 +6,7 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.interactions.Actions;
 import org.testng.Assert;
 
-import static Utils.BrowserUtils.clickSubmitButtonByCss;
+import static Utils.BrowserUtils.submitButtonByCss;
 
 //Page Object Model design pattern
 public class LoginPage extends BasePage {
@@ -52,7 +52,7 @@ public class LoginPage extends BasePage {
         passwordInput.clear();
         passwordInput.sendKeys(password);
 //        clickCheckbox();
-        clickSubmitButtonByCss(submitButtonSelector);
+        submitButtonByCss(submitButtonSelector);
     }
 
     public String getLoginErrorSelectorText() {
