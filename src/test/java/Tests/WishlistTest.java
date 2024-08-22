@@ -26,14 +26,13 @@ public class WishlistTest extends BaseTest {
         electricToolsPage.verifyPageURL();
         Assert.assertEquals(electricToolsPage.getPageTitleSelectorText(),"Scule electrice");
         electricToolsPage.goToPolizorPage();
-        PolizorPageq polizorPageq = new PolizorPageq(driver);
-        polizorPageq.verifyPageURL();
-        Assert.assertEquals(polizorPageq.getPageTitleSelectorText(), "Polizoare profesionale si semiprofesionale");
-        polizorPageq.addProductToWishlist();
+        PolizorPage polizorPage = new PolizorPage(driver);
+        polizorPage.verifyPageURL();
+        Assert.assertEquals(polizorPage.getPageTitleSelectorText(), "Polizoare profesionale si semiprofesionale");
+        polizorPage.addProductToWishlist();
         driver.get(baseUrl+wishlistPage.setPagePath());
         wishlistPage.isProductComponentDisplayed();
-        wishlistPage.clickRemoveButton();
-        wishlistPage.clickRemoveButton();
+//        wishlistPage.clickRemoveButton();
         Assert.assertEquals(wishlistPage.getMessageInfoEmptyText(),"Nu ai nici un articol în lista de dorințe");
 
     }
