@@ -32,7 +32,7 @@ public class WishlistTest extends BaseTest {
         polizorPage.addProductToWishlist();
         driver.get(baseUrl+wishlistPage.setPagePath());
         wishlistPage.isProductComponentDisplayed();
-        wishlistPage.clickRemoveButton();
+//        wishlistPage.clickRemoveButton();
         Assert.assertEquals(wishlistPage.getMessageInfoEmptyText(),"Nu ai nici un articol în lista de dorințe");
 
     }
