@@ -26,7 +26,8 @@ public class LoginModel {
     @Override
     public String toString() {
         return "LoginData{" +
-                "account={email: " + account.getEmail() + ",password: " + account.getPassword() +
+                "account={email: " + account.getEmail() +
+                ",password: " + account.getPassword() +
                 "}, emailError='" + emailError + '\'' +
                 ", passwordError='" + passwordError + '\'' +
                 '}';

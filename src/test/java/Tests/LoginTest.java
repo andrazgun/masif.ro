@@ -2,8 +2,10 @@ package Tests;
 
 import Pages.HomePage;
 import Pages.LoginPage;
+import Tests.ObjectModels.LoginModel;
 import Utils.AllureTestListener;
 import Utils.GenericUtils;
+import com.fasterxml.jackson.databind.ObjectMapper;
 import io.qameta.allure.Epic;
 import io.qameta.allure.Feature;
 import org.testng.Assert;
@@ -11,6 +13,8 @@ import org.testng.annotations.DataProvider;
 import org.testng.annotations.Listeners;
 import org.testng.annotations.Test;
 
+import java.io.File;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Iterator;
@@ -19,7 +23,7 @@ import java.util.Iterator;
 @Epic("Smoke Tests")
 @Feature("Login Tests")
 public class LoginTest extends BaseTest {
-    @DataProvider(name = "loginData")
+    @DataProvider(name = "loginDataProvider")
     public Iterator<Object[]> loginDataProvider() {
         Collection<Object[]> dp = new ArrayList<>();
 //         negative login - invalid email (empty)
@@ -33,7 +37,7 @@ public class LoginTest extends BaseTest {
     @Test(
             description = "Negative login test with data provider",
             enabled = true,
-            dataProvider = "loginData",
+            dataProvider = "loginDataProvider",
             groups = {"Smoke"}
     )
     public void LoginTestWithDataProvider(String username, String password, String assertMessage) {
@@ -49,6 +53,8 @@ public class LoginTest extends BaseTest {
         System.out.println("Email error message is: " + loginPage.getEmailErrorSelectorText());
         Assert.assertEquals(loginPage.getEmailErrorSelectorText(), assertMessage);
     }
+
+
     @Test(
             description = "Negative login test with valid email, valid password but without existing account",
             groups = {"Regression"}

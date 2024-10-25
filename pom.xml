@@ -21,6 +21,7 @@
         <aspectJVersion>1.9.22.1</aspectJVersion>
         <allureVersion>2.29.0</allureVersion>
         <slf4jVersion>2.0.16</slf4jVersion>
+        <mysql-connector-j>9.1.0</mysql-connector-j>
 
         <xmlSmokeSuite>masifSmokeSuite.xml</xmlSmokeSuite>
         <xmlRegressionSuite>masifRegressionSuite.xml</xmlRegressionSuite>
@@ -97,6 +98,11 @@
             <groupId>org.slf4j</groupId>
             <artifactId>slf4j-simple</artifactId>
             <version>${slf4jVersion}</version>
+        </dependency>
+        <dependency>
+            <groupId>com.mysql</groupId>
+            <artifactId>mysql-connector-j</artifactId>
+            <version>${mysql-connector-j}</version>
         </dependency>
 
     </dependencies>

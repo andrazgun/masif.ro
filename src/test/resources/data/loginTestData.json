@@ -22,13 +22,5 @@
     },
     "emailError": "",
     "passwordError": "Acesta este un câmp obligatoriu."
-  },
-  {
-    "account": {
-      "email": "agtest1@yopmail.com",
-      "password": "Test1234!"
-    },
-    "emailError": "",
-    "passwordError": "Contul cu care ai încercat să te autentifici e incorect sau a fost dezactivat temporar. Te rugăm să aștepți și să încerci mai târziu."
   }
 ]
