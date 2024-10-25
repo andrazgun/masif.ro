@@ -30,7 +30,7 @@ public class BaseTest {
         driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(5));
     }
 
-    @AfterTest(enabled = false)
+    @AfterTest(enabled = true)
     public void afterTest() {
         driver.quit();
 

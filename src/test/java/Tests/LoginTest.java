@@ -2,15 +2,22 @@ package Tests;
 
 import Pages.HomePage;
 import Pages.LoginPage;
+import Utils.AllureTestListener;
 import Utils.GenericUtils;
+import io.qameta.allure.Epic;
+import io.qameta.allure.Feature;
 import org.testng.Assert;
 import org.testng.annotations.DataProvider;
+import org.testng.annotations.Listeners;
 import org.testng.annotations.Test;
 
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Iterator;
 
+@Listeners({AllureTestListener.class})
+@Epic("Smoke Tests")
+@Feature("Login Tests")
 public class LoginTest extends BaseTest {
     @DataProvider(name = "loginData")
     public Iterator<Object[]> loginDataProvider() {
