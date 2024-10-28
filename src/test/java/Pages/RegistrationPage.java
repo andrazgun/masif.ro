@@ -19,9 +19,9 @@ public class RegistrationPage extends BasePage {
     private String firstNameErrorSelector = "firstname-error"; //id
     private String lastNameErrorSelector = "lastname-error"; //id
     private String emailErrorSelector = "email_address-error"; //id
-    private String passwordErrorSelector = "password-error";
+    private String passwordErrorSelector = "password-error"; //id
     private String passwordConfirmationErrorSelector = "password-confirmation-error";
-//    private String submitButtonSelector = "//*[@class=\"create-account-container\"]//*[@class=\"primary\"]"; //xpath
+    //    private String submitButtonSelector = "//*[@class=\"create-account-container\"]//*[@class=\"primary\"]"; //xpath
     private String submitButtonSelector = "#form-validate > div.actions-toolbar"; //css
     private String goToLoginPage = "Intra in cont aici";
     String createAccountErrorSelector;
@@ -31,16 +31,20 @@ public class RegistrationPage extends BasePage {
     public RegistrationPage(WebDriver driver) {
         super(driver);
     }
+
     public String setPagePath() {
         return this.pagePath;
     }
+
     public void verifyPageURL() {
         System.out.println("Page URL is: " + getPageURL());
         Assert.assertEquals(getPageURL(), pageURL);
     }
+
     public String getPageTitle() {
         return pageTitle = driver.getTitle();
     }
+
     public void verifyPageTitle() {
         System.out.println("Page title is: " + getPageTitle());
         Assert.assertEquals(getPageTitle(), pageTitle);
@@ -72,25 +76,61 @@ public class RegistrationPage extends BasePage {
         submitButtonByCss(submitButtonSelector);
         implicitWait(driver, 5);
     }
+
     public String getFirstnameErrorText() {
         WebElement firstnameErrorElement = driver.findElement(By.id(firstNameErrorSelector));
         return firstnameErrorElement.getText();
     }
+
     public String getLastnameErrorText() {
         WebElement lastnameErrorElement = driver.findElement(By.id(lastNameErrorSelector));
         return lastnameErrorElement.getText();
     }
+
     public String getEmailErrorText() {
         WebElement emailErrorElement = driver.findElement(By.id(emailErrorSelector));
         return emailErrorElement.getText();
     }
+
     public String getPasswordErrorText() {
         WebElement passwordErrorElement = driver.findElement(By.id(passwordErrorSelector));
         return passwordErrorElement.getText();
     }
+
     public String getPasswordConfirmationErrorText() {
         WebElement passwordErrorText = driver.findElement(By.id(passwordConfirmationErrorSelector));
         return passwordErrorText.getText();
+    }
+
+    public boolean checkErr(String expectedErr, String errorType) {
+        if (errorType.equalsIgnoreCase("firstNameErr")) {
+            if (expectedErr.length() > 0) { // if text is displayed, execute if code block
+                System.out.println("Actual firstName error: " + getFirstnameErrorText());
+                return expectedErr.equals(getFirstnameErrorText());
+            } else return true;
+        } else if (errorType.equalsIgnoreCase("lastNameErr")) {
+            if (expectedErr.length() > 0) { // if text is displayed, execute if code block
+                System.out.println("Actual last name error: " + getLastnameErrorText());
+                return expectedErr.equals(getLastnameErrorText());
+            } else return true;
+
+        } else if (errorType.equalsIgnoreCase("emailErr")) {
+                    if (expectedErr.length() > 0) { // if text is displayed, execute if code block
+                        System.out.println("Actual email error: " + getEmailErrorText());
+                        return expectedErr.equals(getEmailErrorText());
+                    } else return true;
+        } else if (errorType.equalsIgnoreCase("passErr")) {
+            if (expectedErr.length() > 0) {
+                System.out.println("Actual password error:" + getPasswordErrorText());
+                return expectedErr.equalsIgnoreCase(getPasswordErrorText());
+            } else return true;
+        } else if (errorType.equalsIgnoreCase("reEnterPassErr")) {
+            if (expectedErr.length() > 0) { // if text is displayed, execute if code block
+                System.out.println("Actual reEnter password error: " + getPasswordConfirmationErrorText());
+                return expectedErr.equals(getPasswordConfirmationErrorText());
+            } else return true;
+        }
+        return false;
     }
 
 }

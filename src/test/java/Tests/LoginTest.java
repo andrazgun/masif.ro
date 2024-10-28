@@ -5,7 +5,6 @@ import Pages.LoginPage;
 import Tests.ObjectModels.LoginModel;
 import Utils.AllureTestListener;
 import Utils.GenericUtils;
-import com.fasterxml.jackson.databind.ObjectMapper;
 import io.qameta.allure.Epic;
 import io.qameta.allure.Feature;
 import org.testng.Assert;
@@ -13,8 +12,6 @@ import org.testng.annotations.DataProvider;
 import org.testng.annotations.Listeners;
 import org.testng.annotations.Test;
 
-import java.io.File;
-import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Iterator;
