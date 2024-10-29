@@ -3,20 +3,20 @@ package Tests;
 import Utils.*;
 import org.apache.commons.codec.binary.Base64;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
 import org.testng.annotations.*;
 import java.time.Duration;
 
 public class BaseTest {
     public static String browser = GenericUtils.getBrowserFromConfig(ConstantUtils.CONFIG_FILE);
     public static WebDriver driver = WebDriverFactory.getDriver(browser);
+
     public String baseUrl = GenericUtils.createBaseUrl(ConstantUtils.CONFIG_FILE);
     protected String dbHostname, dbPort, dbUser, dbPassword, dbSchema;
     protected Base64 base64 = new Base64();
 
-    @BeforeTest
-//            (
-//            groups = {"Smoke","Regression"}
-//            )
+
+    @BeforeTest (alwaysRun = true)
     public void beforeTest() {
 //        System.out.println(baseUrl);
         dbHostname = ConfigUtils.getGenericValue(ConstantUtils.CONFIG_FILE, "dbHostname","");
@@ -34,8 +34,13 @@ public class BaseTest {
 
     @AfterTest(enabled = false)
     public void afterTest() {
-        driver.quit();
-
+            driver.quit();
+    }
+    @AfterClass
+    public void closeDriver() {
+        if (driver != null) {
+            driver.quit();
+        }
     }
 
 }

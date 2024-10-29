@@ -9,7 +9,7 @@
         </groups>
         <classes>
             <class name="Tests.BaseTest"/>
-            <class name="Tests.LoginTest">
+            <class name="Tests.LoginNegativeTest">
                 <methods>
                     <include name="getParamsFromCmd"/>
                 </methods>

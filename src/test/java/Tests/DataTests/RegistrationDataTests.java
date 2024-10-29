@@ -3,16 +3,22 @@ package Tests.DataTests;
 import Pages.RegistrationPage;
 import Tests.BaseTest;
 import Tests.ObjectModels.RegistrationModel;
+import Utils.AllureTestListener;
 import Utils.Tools;
+import io.qameta.allure.Epic;
+import io.qameta.allure.Feature;
 import org.testng.Assert;
 import org.testng.annotations.DataProvider;
+import org.testng.annotations.Listeners;
 import org.testng.annotations.Test;
 
 import java.sql.*;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Iterator;
-
+@Listeners({AllureTestListener.class})
+@Epic("Regression Tests")
+@Feature("Registration Negative Data Tests")
 public class RegistrationDataTests extends BaseTest {
 
     //    mySQL Database Data Provider
@@ -94,19 +100,19 @@ public class RegistrationDataTests extends BaseTest {
         String expectedPassErr = rm.getPasswordError();
         String expectedReEnterPassErr = rm.getReEnterPasswordError();
 
-        System.out.println("Expected First Name error:" + expectedFirstNameErr);
+        System.out.println("Expected First Name error: " + expectedFirstNameErr);
         Assert.assertTrue(registrationPage.checkErr(expectedFirstNameErr, "firstNameErr"));
 
-        System.out.println("Expected Last Name error:" + expectedLastNameErr);
+        System.out.println("Expected Last Name error: " + expectedLastNameErr);
         Assert.assertTrue(registrationPage.checkErr(expectedLastNameErr, "lastNameErr"));
 
-        System.out.println("Expected email error:" + expectedEmailErr);
+        System.out.println("Expected email error: " + expectedEmailErr);
         Assert.assertTrue(registrationPage.checkErr(expectedEmailErr, "emailErr"));
 
-        System.out.println("Expected password error:" + expectedPassErr);
+        System.out.println("Expected password error: " + expectedPassErr);
         Assert.assertTrue(registrationPage.checkErr(expectedPassErr, "passErr"));
 
-        System.out.println("Expected password confirmation error:" + expectedReEnterPassErr);
+        System.out.println("Expected password confirmation error: " + expectedReEnterPassErr);
         Assert.assertTrue(registrationPage.checkErr(expectedReEnterPassErr, "reEnterPassErr"));
     }
 

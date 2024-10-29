@@ -9,7 +9,8 @@
         </groups>
         <classes>
             <class name="Tests.BaseTest"/>
-            <class name="Tests.LoginTest"/>
+            <class name="Tests.DataTests.LoginDataTests"/>
+            <class name="Tests.DataTests.RegistrationDataTests"/>
         </classes>
     </test>
 

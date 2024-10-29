@@ -2,7 +2,6 @@ package Tests;
 
 import Pages.HomePage;
 import Pages.LoginPage;
-import Tests.ObjectModels.LoginModel;
 import Utils.AllureTestListener;
 import Utils.GenericUtils;
 import io.qameta.allure.Epic;
@@ -18,8 +17,8 @@ import java.util.Iterator;
 
 @Listeners({AllureTestListener.class})
 @Epic("Smoke Tests")
-@Feature("Login Tests")
-public class LoginTest extends BaseTest {
+@Feature("Login Negative Tests")
+public class LoginNegativeTest extends BaseTest {
     @DataProvider(name = "loginDataProvider")
     public Iterator<Object[]> loginDataProvider() {
         Collection<Object[]> dp = new ArrayList<>();
@@ -32,10 +31,9 @@ public class LoginTest extends BaseTest {
         return dp.iterator();
     }
     @Test(
-            description = "Negative login test with data provider",
+            description = "Login negative test with iterator data provider",
             enabled = true,
-            dataProvider = "loginDataProvider",
-            groups = {"Smoke"}
+            dataProvider = "loginDataProvider"
     )
     public void LoginTestWithDataProvider(String username, String password, String assertMessage) {
         driver.get(baseUrl);
@@ -53,8 +51,7 @@ public class LoginTest extends BaseTest {
 
 
     @Test(
-            description = "Negative login test with valid email, valid password but without existing account",
-            groups = {"Regression"}
+            description = "Negative login test with valid email, valid password but without existing account"
     )
     public void LoginNegativeTest01() {
         driver.get(baseUrl);
@@ -68,8 +65,7 @@ public class LoginTest extends BaseTest {
         loginPage.isLoginErrorDisplayed();
     }
     @Test(
-            description = "Negative login test with empty email, empty password",
-            groups = {"Regression"}
+            description = "Negative login test with empty email, empty password"
     )
     public void LoginNegativeTest02() {
         driver.get(baseUrl);
@@ -117,23 +113,5 @@ public class LoginTest extends BaseTest {
         System.out.println("Login error message is: " + loginPage.getLoginErrorSelectorText());
         Assert.assertEquals(loginPage.getLoginErrorSelectorText(), "Contul cu care ai încercat să te autentifici e incorect sau a fost dezactivat temporar. Te rugăm să aștepți și să încerci mai târziu.");
     }
-    @Test (
-            enabled = false,
-            groups = {"Smoke"},
-            dependsOnGroups = {"Regression"}
-    )
-    public void LoginPositiveTest() {
-        driver.get(baseUrl);
-        HomePage homePage = new HomePage(driver);
-        homePage.verifyPageURL();
-        homePage.goToLoginPage();
 
-        LoginPage loginPage = new LoginPage(driver);
-        loginPage.verifyPageURL();
-        Assert.assertTrue(loginPage.getCheckboxNameSelector().isDisplayed());
-        loginPage.login("agtest1@yopmail.com", "Test1234");
-        System.out.println(loginPage.getLoginSuccessSelectorText());
-        Assert.assertEquals(loginPage.getLoginSuccessSelectorText(),"Contul meu");
-
-    }
 }

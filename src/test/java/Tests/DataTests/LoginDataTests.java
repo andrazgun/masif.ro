@@ -3,10 +3,14 @@ package Tests.DataTests;
 import Pages.LoginPage;
 import Tests.BaseTest;
 import Tests.ObjectModels.LoginModel;
+import Utils.AllureTestListener;
 import Utils.Tools;
 import com.fasterxml.jackson.databind.ObjectMapper;
+import io.qameta.allure.Epic;
+import io.qameta.allure.Feature;
 import org.testng.Assert;
 import org.testng.annotations.DataProvider;
+import org.testng.annotations.Listeners;
 import org.testng.annotations.Test;
 import java.io.File;
 import java.io.IOException;
@@ -14,7 +18,9 @@ import java.sql.*;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Iterator;
-
+@Listeners({AllureTestListener.class})
+@Epic("Regression Tests")
+@Feature("Login Negative Data Tests")
 public class LoginDataTests extends BaseTest {
 
     //    JSON Data Provider
@@ -32,7 +38,10 @@ public class LoginDataTests extends BaseTest {
 
         return dp.iterator();
     }
-    @Test(dataProvider = "jsonDataProvider")
+    @Test(
+            dataProvider = "jsonDataProvider",
+            description = "Login negative test with JSON data provider"
+    )
     public void loginWithJsonDataProviderTest(LoginModel lm) {
         printData(lm);
         loginActions(lm);
@@ -76,7 +85,10 @@ public class LoginDataTests extends BaseTest {
         return Tools.replaceElements(resultSet.getString(element), "''", "");
     }
 
-    @Test(dataProvider = "SQLDataProvider")
+    @Test(
+            dataProvider = "SQLDataProvider",
+            description = "Login negative test with MySQL data provider"
+    )
     public void loginWithDBTest(LoginModel lm) {
         printData(lm);
         loginActions(lm);
@@ -102,10 +114,10 @@ public class LoginDataTests extends BaseTest {
         String expectedEmailErr = lm.getEmailError();
         String expectedPassErr = lm.getPasswordError();
 
-        System.out.println("Verify expected errors present:\n Expected email error:" + expectedEmailErr);
+        System.out.println("Verify expected errors present:\n Expected email error: " + expectedEmailErr);
         Assert.assertTrue(loginPage.checkErr(expectedEmailErr, "emailErr"));
 
-        System.out.println("Expected password error:" + expectedPassErr);
+        System.out.println("Expected password error: " + expectedPassErr);
         Assert.assertTrue(loginPage.checkErr(expectedPassErr, "passErr"));
     }
 
