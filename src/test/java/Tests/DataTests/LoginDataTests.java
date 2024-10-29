@@ -87,6 +87,7 @@ public class LoginDataTests extends BaseTest {
 
     @Test(
             dataProvider = "SQLDataProvider",
+            groups = "Regression",
             description = "Login negative test with MySQL data provider"
     )
     public void loginWithDBTest(LoginModel lm) {

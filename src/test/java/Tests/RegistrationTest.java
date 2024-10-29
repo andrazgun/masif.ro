@@ -1,10 +1,16 @@
 package Tests;
 
 import Pages.RegistrationPage;
+import Utils.AllureTestListener;
 import Utils.GenericUtils;
+import io.qameta.allure.Epic;
+import io.qameta.allure.Feature;
 import org.testng.Assert;
+import org.testng.annotations.Listeners;
 import org.testng.annotations.Test;
-
+@Listeners({AllureTestListener.class})
+//@Epic("Smoke Tests")
+@Feature("Registration Negative Tests")
 public class RegistrationTest extends BaseTest {
     @Test
     public void RegistrationBasicTest() {

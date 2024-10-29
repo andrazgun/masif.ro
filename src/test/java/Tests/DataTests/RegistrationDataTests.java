@@ -67,7 +67,11 @@ public class RegistrationDataTests extends BaseTest {
         return Tools.replaceElements(resultSet.getString(element), "''", "");
     }
 
-    @Test(dataProvider = "SQLDataProvider")
+    @Test(
+            dataProvider = "SQLDataProvider",
+            groups = "Regression",
+            description = "Registration negative test with MySQL data provider"
+    )
     public void registrationWithDBTest(RegistrationModel rm) {
         printData(rm);
         registrationActions(rm);

@@ -1,5 +1,6 @@
 package Tests;
 
+import Pages.AccountPage;
 import Pages.HomePage;
 import Pages.LoginPage;
 import Utils.AllureTestListener;
@@ -31,6 +32,9 @@ public class LoginPositiveTest extends BaseTest {
         loginPage.login("agtest1@yopmail.com", "Test1234");
         System.out.println(loginPage.getLoginSuccessSelectorText());
         Assert.assertEquals(loginPage.getLoginSuccessSelectorText(),"Contul meu");
+
+        AccountPage accountPage = new AccountPage(driver);
+        accountPage.logOut();
 
     }
 }
