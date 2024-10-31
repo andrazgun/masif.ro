@@ -17,7 +17,6 @@ public class HomePage extends BasePage {
     @Override
     public void verifyPageURL() {
         logger.info("Assert that page URL is:" + getPageURL());
-        System.out.println("Page URL is: " + getPageURL());
         Assert.assertEquals(getPageURL(), pageURL);
     }
     public void goToLoginPage() {
