@@ -4,14 +4,14 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.testng.Assert;
 
-import static Utils.BrowserUtils.clickButtonByCss;
+import static Utils.BrowserUtils.*;
 
 public class AccountPage extends BasePage {
     private final String pagePath = "/customer/account/";
     private String pageURL = "https://masif.ro/customer/account/";
-    private String editAccountPageSelector = "#maincontent > div.columns > div.column.main > div.block.block-dashboard-info > div.block-content > div.box.box-information > div.box-actions > a.action.edit";
-    private String goToWishlistsSelector = "#block-collapsible-nav > ul > li:nth-child(5) > a";
-    private String exitAccountSelector = "#block-collapsible-nav > ul > li:nth-child(9) > a";
+    private String editAccountLinkSelector = "#maincontent > div.columns > div.column.main > div.block.block-dashboard-info > div.block-content > div.box.box-information > div.box-actions > a.action.edit";
+    private String wishlistsLinkSelector = "#block-collapsible-nav > ul > li:nth-child(5) > a";
+    private String logoutLinkSelector = "a[href='https://masif.ro/customer/account/logout/']";
     public AccountPage(WebDriver driver) {
         super(driver);
     }
@@ -23,18 +23,15 @@ public class AccountPage extends BasePage {
         System.out.println("Page URL is: " + getPageURL());
         Assert.assertEquals(getPageURL(), pageURL);
     }
-    public void goToEditAccountPage() {
-        driver.findElement(By.cssSelector(editAccountPageSelector)).click();
+    public void clickEditAccountLink() {
+        driver.findElement(By.cssSelector(editAccountLinkSelector)).click();
     }
-    public void goToWishlists() {
-        clickButtonByCss(goToWishlistsSelector);
+    public void clickWishlistsLink() {
+        clickButtonByCss(wishlistsLinkSelector);
+    }
+    public void clickLogoutLink() {
+        driver.findElement(By.cssSelector(logoutLinkSelector)).click();
     }
 
-    public String getExitButtonText() {
-        return driver.findElement(By.cssSelector(exitAccountSelector)).getText();
-    }
-    public void logOut() {
-        clickButtonByCss(exitAccountSelector);
-    }
 
 }

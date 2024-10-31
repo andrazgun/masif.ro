@@ -15,7 +15,10 @@ public class BaseTest {
     protected String dbHostname, dbPort, dbUser, dbPassword, dbSchema;
     protected Base64 base64 = new Base64();
 
-
+@BeforeClass
+public void clearCookies() {
+    driver.manage().deleteAllCookies();
+}
     @BeforeTest (alwaysRun = true)
     public void beforeTest() {
 //        System.out.println(baseUrl);
@@ -25,7 +28,7 @@ public class BaseTest {
         dbPort = ConfigUtils.getGenericValue(ConstantUtils.CONFIG_FILE, "dbPort","");
         dbSchema = ConfigUtils.getGenericValue(ConstantUtils.CONFIG_FILE, "dbSchema","");
         driver.manage().window().maximize();
-        driver.manage().deleteAllCookies();
+
 //        driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(3));
     }
     public void implicitWait() {
@@ -36,7 +39,7 @@ public class BaseTest {
     public void afterTest() {
             driver.quit();
     }
-    @AfterClass
+    @AfterClass(enabled = false)
     public void closeDriver() {
         if (driver != null) {
             driver.quit();

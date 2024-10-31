@@ -21,7 +21,7 @@ import java.util.Iterator;
 @Listeners({AllureTestListener.class})
 @Epic("Regression Tests")
 @Feature("Login Negative Data Tests")
-public class LoginDataTests extends BaseTest {
+public class LoginNegativeDataTests extends BaseTest {
 
     //    JSON Data Provider
     @DataProvider(name = "jsonDataProvider")
@@ -30,7 +30,7 @@ public class LoginDataTests extends BaseTest {
 //      here is starting deserialization of json into LoginModel object
         ObjectMapper objectMapper = new ObjectMapper(); //mapping the json with ObjectMapper
 
-        File f = new File("src\\test\\resources\\data\\loginTestData.json"); //loading the file
+        File f = new File("src\\test\\resources\\data\\loginNegativeTestData.json"); //loading the file
         LoginModel[] lms = objectMapper.readValue(f, LoginModel[].class); //mapping the file data as a list [] of LoginModel class
 
         for (LoginModel lm : lms)
@@ -40,7 +40,8 @@ public class LoginDataTests extends BaseTest {
     }
     @Test(
             dataProvider = "jsonDataProvider",
-            description = "Login negative test with JSON data provider"
+            description = "Login negative test with JSON data provider",
+            groups = {"Regression"}
     )
     public void loginWithJsonDataProviderTest(LoginModel lm) {
         printData(lm);
@@ -68,7 +69,8 @@ public class LoginDataTests extends BaseTest {
                         getEscapedElement(resultSet, "email"),
                         getEscapedElement(resultSet, "password"),
                         getEscapedElement(resultSet, "emailError"),
-                        getEscapedElement(resultSet, "passwordError"));
+                        getEscapedElement(resultSet, "passwordError")
+                );
                 dp.add(new Object[]{lm});
             }
         } catch (SQLException ex) {
@@ -87,7 +89,7 @@ public class LoginDataTests extends BaseTest {
 
     @Test(
             dataProvider = "SQLDataProvider",
-            groups = "Regression",
+            groups = {"Regression"},
             description = "Login negative test with MySQL data provider"
     )
     public void loginWithDBTest(LoginModel lm) {

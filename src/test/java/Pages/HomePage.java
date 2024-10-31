@@ -2,6 +2,7 @@ package Pages;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.interactions.Actions;
 import org.testng.Assert;
 
 public class HomePage extends BasePage {
@@ -28,6 +29,9 @@ public class HomePage extends BasePage {
         driver.findElement(By.className(productsNavigationSelector)).click();
     }
     public void goToElectricTools() {
+//        driver.findElement(By.cssSelector(electricToolsSelector)).click();
+        Actions actions = new Actions(driver);
+        actions.moveToElement(driver.findElement(By.cssSelector(electricToolsSelector))).perform();
         driver.findElement(By.cssSelector(electricToolsSelector)).click();
     }
 

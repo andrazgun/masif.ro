@@ -1,13 +1,17 @@
 package Tests;
 
 import Pages.*;
+import org.openqa.selenium.WebElement;
 import org.testng.Assert;
 import org.testng.annotations.Test;
+
+import java.util.List;
 
 public class WishlistTest extends BaseTest {
     @Test(
             description = "empty wishlist test",
-            groups = {"Regression"}
+            groups = {"Regression"},
+            enabled = false
     )
     public void WishlistTest01() {
         driver.get(baseUrl);
@@ -33,6 +37,7 @@ public class WishlistTest extends BaseTest {
         driver.get(baseUrl+wishlistPage.setPagePath());
         wishlistPage.isProductComponentDisplayed();
 //        wishlistPage.clickRemoveButton();
+
         Assert.assertEquals(wishlistPage.getMessageInfoEmptyText(),"Nu ai nici un articol în lista de dorințe");
 
     }

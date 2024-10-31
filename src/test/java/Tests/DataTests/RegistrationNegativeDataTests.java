@@ -19,7 +19,7 @@ import java.util.Iterator;
 @Listeners({AllureTestListener.class})
 @Epic("Regression Tests")
 @Feature("Registration Negative Data Tests")
-public class RegistrationDataTests extends BaseTest {
+public class RegistrationNegativeDataTests extends BaseTest {
 
     //    mySQL Database Data Provider
     @DataProvider(name = "SQLDataProvider")
@@ -69,7 +69,7 @@ public class RegistrationDataTests extends BaseTest {
 
     @Test(
             dataProvider = "SQLDataProvider",
-            groups = "Regression",
+            groups = {"Regression"},
             description = "Registration negative test with MySQL data provider"
     )
     public void registrationWithDBTest(RegistrationModel rm) {

@@ -25,7 +25,7 @@ public class AccountEditTest extends BaseTest {
         loginPage.login("agtest1@yopmail.com", "Test1234");
         AccountPage accountPage = new AccountPage(driver);
         accountPage.verifyPageURL();
-        accountPage.goToEditAccountPage();
+        accountPage.clickEditAccountLink();
         AccountEditPage accountEditPage = new AccountEditPage(driver);
         accountEditPage.verifyPageURL();
         accountEditPage.editAccount(GenericUtils.createRandomStringTwo(7),GenericUtils.createRandomStringTwo(7));

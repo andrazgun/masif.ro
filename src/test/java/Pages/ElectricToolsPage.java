@@ -8,7 +8,7 @@ public class ElectricToolsPage extends BasePage {
     private final String pagePath = "/scule-electrice/";
     private String pageURL = "https://masif.ro/scule-electrice/";
     private String pageTitleSelector = "#page-title-heading > span"; //css
-    private String polizorPageSelector = "#maincontent > div.columns > div > ul > li:nth-child(1) > div > div.apptrian-subcategories-category-name"; //css a[href
+    private String polizorPageSelector = "#maincontent > div.columns > div > ul > li:nth-child(1) > div > div.apptrian-subcategories-category-image > a";
 
     public ElectricToolsPage(WebDriver driver) {
         super(driver);

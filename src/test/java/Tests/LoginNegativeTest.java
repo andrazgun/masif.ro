@@ -16,7 +16,6 @@ import java.util.Collection;
 import java.util.Iterator;
 
 @Listeners({AllureTestListener.class})
-@Epic("Smoke Tests")
 @Feature("Login Negative Tests")
 public class LoginNegativeTest extends BaseTest {
     @DataProvider(name = "loginDataProvider")
@@ -33,7 +32,8 @@ public class LoginNegativeTest extends BaseTest {
     @Test(
             description = "Login negative test with iterator data provider",
             enabled = true,
-            dataProvider = "loginDataProvider"
+            dataProvider = "loginDataProvider",
+            groups = {"Smoke"}
     )
     public void LoginTestWithDataProvider(String username, String password, String assertMessage) {
         driver.get(baseUrl);
@@ -65,7 +65,8 @@ public class LoginNegativeTest extends BaseTest {
         loginPage.isLoginErrorDisplayed();
     }
     @Test(
-            description = "Negative login test with empty email, empty password"
+            description = "Negative login test with empty email, empty password",
+            groups = {"Smoke"}
     )
     public void LoginNegativeTest02() {
         driver.get(baseUrl);
@@ -83,7 +84,7 @@ public class LoginNegativeTest extends BaseTest {
     }
     @Test(
             description = "Negative login test with valid email, empty password",
-            groups = {"Regression"}
+            groups = {"Smoke"}
     )
     public void LoginNegativeTest03() {
         driver.get(baseUrl);
@@ -99,7 +100,7 @@ public class LoginNegativeTest extends BaseTest {
     }
     @Test(
             description = "Negative login test with valid email, valid password but without existing account",
-            groups = {"Regression"}
+            groups = {"Smoke"}
     )
     public void LoginNegativeTest04() {
         driver.get(baseUrl);

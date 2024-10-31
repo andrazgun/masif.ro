@@ -3,7 +3,6 @@ package Tests;
 import Pages.RegistrationPage;
 import Utils.AllureTestListener;
 import Utils.GenericUtils;
-import io.qameta.allure.Epic;
 import io.qameta.allure.Feature;
 import org.testng.Assert;
 import org.testng.annotations.Listeners;
@@ -11,9 +10,12 @@ import org.testng.annotations.Test;
 @Listeners({AllureTestListener.class})
 //@Epic("Smoke Tests")
 @Feature("Registration Negative Tests")
-public class RegistrationTest extends BaseTest {
-    @Test
-    public void RegistrationBasicTest() {
+public class RegistrationNegativeTest extends BaseTest {
+    @Test(
+            description = "Negative registration test with invalid email and invalid password",
+            groups = {"Smoke"}
+    )
+            public void RegistrationTest01() {
         RegistrationPage registrationPage = new RegistrationPage(driver);
         driver.get(baseUrl + registrationPage.setPagePath());
         registrationPage.verifyPageURL();
@@ -27,8 +29,11 @@ public class RegistrationTest extends BaseTest {
                 );
         Assert.assertEquals(registrationPage.getPasswordConfirmationErrorText(),"Adauga aceasi valoare din nou.");
     }
-    @Test
-    public void RegistrationTest01() {
+    @Test(
+            description = "Negative registration test with invalid password",
+            groups = {"Smoke"}
+    )
+    public void RegistrationTest02() {
         RegistrationPage registrationPage = new RegistrationPage(driver);
         driver.get(baseUrl + registrationPage.setPagePath());
         registrationPage.verifyPageURL();
@@ -43,11 +48,10 @@ public class RegistrationTest extends BaseTest {
         Assert.assertEquals(registrationPage.getPasswordConfirmationErrorText(),"Adauga aceasi valoare din nou.");
     }
     @Test(
-            description = "Negative registration test with empty email, empty password",
-            enabled = true,
+            description = "Negative registration test with empty data",
             groups = {"Smoke"}
     )
-    public void RegistrationTest02() {
+    public void RegistrationTest03() {
         RegistrationPage registrationPage = new RegistrationPage(driver);
         driver.get(baseUrl + registrationPage.setPagePath());
         registrationPage.verifyPageURL();
