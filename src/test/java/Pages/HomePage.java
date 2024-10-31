@@ -16,11 +16,13 @@ public class HomePage extends BasePage {
     }
     @Override
     public void verifyPageURL() {
+        logger.info("Assert that page URL is:" + getPageURL());
         System.out.println("Page URL is: " + getPageURL());
         Assert.assertEquals(getPageURL(), pageURL);
     }
     public void goToLoginPage() {
         driver.findElement(By.className(loginPageIconSelector)).click();
+        logger.info("Click on Login link");
     }
     public void goToWishlistPage() {
         driver.findElement(By.className(wishlistPageIconSelector)).click();

@@ -7,6 +7,7 @@ import Utils.AllureTestListener;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import io.qameta.allure.Epic;
 import io.qameta.allure.Feature;
+import org.slf4j.LoggerFactory;
 import org.testng.Assert;
 import org.testng.annotations.DataProvider;
 import org.testng.annotations.Listeners;
@@ -17,6 +18,8 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Iterator;
+import java.util.logging.Logger;
+
 @Listeners({AllureTestListener.class})
 @Epic("Smoke Tests")
 @Feature("Login Positive Tests")
@@ -45,6 +48,7 @@ public class LoginPositiveTest extends BaseTest {
     public void loginPositiveWithJsonDataProviderTest(LoginModel lm) {
         printData(lm);
         driver.get(baseUrl);
+
 
         HomePage homePage = new HomePage(driver);
         homePage.verifyPageURL();

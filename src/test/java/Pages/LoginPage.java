@@ -32,6 +32,7 @@ public class LoginPage extends BasePage {
     }
     @Override
     public void verifyPageURL() {
+        logger.info("Assert that page URL is:" + getPageURL());
         System.out.println("Page URL is: " + getPageURL());
         Assert.assertEquals(getPageURL(), pageURL);
     }
@@ -48,17 +49,24 @@ public class LoginPage extends BasePage {
         WebElement passwordInput = driver.findElement(By.name(passwordInputSelector));
 
         usernameInput.clear();
+        logger.info("Username input is cleared.");
         usernameInput.sendKeys(username);
+        logger.info("Username is inserted.");
         passwordInput.clear();
+        logger.info("Password input field is cleared.");
         passwordInput.sendKeys(password);
+        logger.info("Password is inserted.");
 //        clickCheckbox();
         submitButtonByCss(submitButtonSelector);
+        logger.info("Submit button is clicked.");
+
     }
 
     public String getLoginErrorSelectorText() {
         return driver.findElement(By.cssSelector(loginErrorSelector)).getText();
     }
     public void isLoginErrorDisplayed() {
+        logger.info("Assert that login error is displayed.");
         Assert.assertTrue(driver.findElement(By.cssSelector(loginErrorSelector)).isDisplayed());
     }
     public String getLoginSuccessSelectorText() {

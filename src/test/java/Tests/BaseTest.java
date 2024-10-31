@@ -4,8 +4,10 @@ import Utils.*;
 import org.apache.commons.codec.binary.Base64;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
+import org.slf4j.LoggerFactory;
 import org.testng.annotations.*;
 import java.time.Duration;
+import java.util.logging.Logger;
 
 public class BaseTest {
     public static String browser = GenericUtils.getBrowserFromConfig(ConstantUtils.CONFIG_FILE);

@@ -18,6 +18,7 @@ import java.util.Iterator;
 @Listeners({AllureTestListener.class})
 @Feature("Login Negative Tests")
 public class LoginNegativeTest extends BaseTest {
+
     @DataProvider(name = "loginDataProvider")
     public Iterator<Object[]> loginDataProvider() {
         Collection<Object[]> dp = new ArrayList<>();
@@ -54,6 +55,7 @@ public class LoginNegativeTest extends BaseTest {
             description = "Negative login test with valid email, valid password but without existing account"
     )
     public void LoginNegativeTest01() {
+
         driver.get(baseUrl);
         HomePage homePage = new HomePage(driver);
         homePage.verifyPageURL();

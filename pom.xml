@@ -20,8 +20,9 @@
         <surefireVersion>3.2.5</surefireVersion>
         <aspectJVersion>1.9.22.1</aspectJVersion>
         <allureVersion>2.29.0</allureVersion>
-        <slf4jVersion>2.0.16</slf4jVersion>
+        <logback-classic>1.5.12</logback-classic>
         <mysql-connector-j>9.1.0</mysql-connector-j>
+        <log4j>2.17.1</log4j>
 
         <xmlSmokeSuite>masifSmokeSuite.xml</xmlSmokeSuite>
         <xmlRegressionSuite>masifRegressionSuite.xml</xmlRegressionSuite>
@@ -87,22 +88,28 @@
             <version>${allureVersion}</version>
             <scope>test</scope>
         </dependency>
-        <!-- https://mvnrepository.com/artifact/org.slf4j/slf4j-api -->
+        <!-- https://mvnrepository.com/artifact/ch.qos.logback/logback-classic -->
         <dependency>
-            <groupId>org.slf4j</groupId>
-            <artifactId>slf4j-api</artifactId>
-            <version>${slf4jVersion}</version>
-        </dependency>
-        <!-- https://mvnrepository.com/artifact/org.slf4j/slf4j-simple -->
-        <dependency>
-            <groupId>org.slf4j</groupId>
-            <artifactId>slf4j-simple</artifactId>
-            <version>${slf4jVersion}</version>
+            <groupId>ch.qos.logback</groupId>
+            <artifactId>logback-classic</artifactId>
+            <version>${logback-classic}</version>
+            <scope>test</scope>
         </dependency>
         <dependency>
             <groupId>com.mysql</groupId>
             <artifactId>mysql-connector-j</artifactId>
             <version>${mysql-connector-j}</version>
+        </dependency>
+        <!-- Log4j Dependencies -->
+        <dependency>
+            <groupId>org.apache.logging.log4j</groupId>
+            <artifactId>log4j-core</artifactId>
+            <version>${log4j}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.apache.logging.log4j</groupId>
+            <artifactId>log4j-api</artifactId>
+            <version>${log4j}</version>
         </dependency>
 
     </dependencies>
