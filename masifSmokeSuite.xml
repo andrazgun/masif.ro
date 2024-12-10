@@ -8,9 +8,9 @@
             </run>
         </groups>
         <classes>
-            <class name="Tests.RegistrationNegativeTest"/>
-            <class name="Tests.LoginPositiveTest"/>
-            <class name="Tests.LoginNegativeTest">
+            <class name="tests.RegistrationNegativeTest"/>
+            <class name="tests.LoginPositiveTest"/>
+            <class name="tests.LoginNegativeTest">
                 <methods>
                     <include name="getParamsFromCmd"/>
                 </methods>

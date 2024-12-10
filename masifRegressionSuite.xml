@@ -8,11 +8,11 @@
             </run>
         </groups>
         <classes>
-            <class name="Tests.DataTests.RegistrationNegativeDataTests"/>
-            <class name="Tests.DataTests.LoginNegativeDataTests"/>
-            <class name="Tests.DataTests.RegistrationNegativeDataTests"/>
-            <class name="Tests.AccountEditTest"/>
-            <class name="Tests.WishlistTest"/>
+            <class name="tests.dataTests.RegistrationNegativeDataTests"/>
+            <class name="tests.dataTests.LoginNegativeDataTests"/>
+            <class name="tests.dataTests.RegistrationNegativeDataTests"/>
+            <class name="tests.AccountEditTest"/>
+            <class name="tests.WishlistTest"/>
         </classes>
     </test>
 
