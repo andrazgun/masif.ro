@@ -41,3 +41,6 @@ To ensure flexibility and coverage, the framework supports data-driven testing u
 - **Advanced Reporting**: Allure Reports offer visually rich, interactive reports with test case status, logs, and screenshots for failed tests.
 
 ---
+
+Generate report: allure generate
+View report: allure open
