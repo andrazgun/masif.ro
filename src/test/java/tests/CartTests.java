@@ -1,10 +1,12 @@
 package tests;
 
+import io.qameta.allure.Feature;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 import pages.ElectricToolsPage;
 import pages.HomePage;
 
+@Feature("Cart tests")
 public class CartTests extends BaseTest {
 
     @Test(

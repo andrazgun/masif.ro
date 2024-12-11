@@ -1,5 +1,6 @@
 package pages;
 
+import io.qameta.allure.Step;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -21,6 +22,8 @@ public class LoginPage extends BasePage {
     private String loginSuccessSelector = "#maincontent > div.columns > div.column.main > div.page-title-wrapper > h1 > span";
     private By checkboxNameSelector = By.cssSelector("#remember-me-box");
     private By checkboxButton = By.className("checkbox");
+    private By pageTitleSelector = By.cssSelector("[data-ui-id='page-title-wrapper']");
+
 
 
     public LoginPage(WebDriver driver) {
@@ -54,20 +57,22 @@ public class LoginPage extends BasePage {
         usernameInput.clear();
         log.info("Username input field is cleared.");
         usernameInput.sendKeys(username);
-//        log.info("Username \"" + username + "\" is inserted.");
         log.info("Username {} is inserted.", username);
         passwordInput.clear();
         log.info("Password input field is cleared.");
         passwordInput.sendKeys(password);
-//        log.info("Password \"" + password + "\" is inserted.");
         log.info("Password {} is inserted.", password);
         submitButtonByCss(submitButtonSelector);
         log.info("Submit button is clicked.");
-
     }
 
+    @Step
     public String getLoginErrorSelectorText() {
         return driver.findElement(By.cssSelector(loginErrorSelector)).getText();
+    }
+
+    public String getPageTitleText() {
+        return driver.findElement(pageTitleSelector).getText();
     }
 
     public void isLoginErrorDisplayed() {
@@ -75,6 +80,7 @@ public class LoginPage extends BasePage {
         Assert.assertTrue(driver.findElement(By.cssSelector(loginErrorSelector)).isDisplayed());
     }
 
+    @Step
     public String getLoginSuccessSelectorText() {
         return driver.findElement(By.cssSelector(loginSuccessSelector)).getText();
     }
@@ -87,6 +93,7 @@ public class LoginPage extends BasePage {
         return driver.findElement(By.id(emailErrorSelector)).getText();
     }
 
+    @Step
     public boolean checkErr(String expectedErr, String errorType) {
         if (errorType.equalsIgnoreCase("emailErr")) {
             if (expectedErr.length() > 0) { // if text is displayed, execute if code block

@@ -3,13 +3,11 @@ import pages.AccountPage;
 import pages.HomePage;
 import pages.LoginPage;
 import tests.objectModels.LoginModel;
-import utils.AllureTestListener;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import io.qameta.allure.Epic;
 import io.qameta.allure.Feature;
 import org.testng.Assert;
 import org.testng.annotations.DataProvider;
-import org.testng.annotations.Listeners;
 import org.testng.annotations.Test;
 
 import java.io.File;
@@ -18,7 +16,6 @@ import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Iterator;
 
-@Listeners({AllureTestListener.class})
 @Epic("Smoke Tests")
 @Feature("Login Positive Tests")
 public class LoginPositiveTest extends BaseTest {
@@ -49,7 +46,7 @@ public class LoginPositiveTest extends BaseTest {
         driver.get(baseUrl);
         HomePage homePage = new HomePage(driver);
         homePage.verifyPageURL();
-        homePage.goToLoginPage();
+        homePage.clickLoginIcon();
         LoginPage loginPage = new LoginPage(driver);
         loginPage.verifyPageURL();
         Assert.assertTrue(loginPage.getCheckboxNameSelector().isDisplayed());

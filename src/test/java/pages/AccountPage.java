@@ -1,5 +1,6 @@
 package pages;
 
+import io.qameta.allure.Step;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.testng.Assert;
@@ -13,11 +14,13 @@ public class AccountPage extends BasePage {
     private String wishlistsLinkSelector = "#block-collapsible-nav > ul > li:nth-child(5) > a";
     private String logoutLinkSelector = "a[href='https://masif.ro/customer/account/logout/']";
     private String successMessage = "[data-ui-id='message-success']";
+//    private By acceptCookiesButton = By.cssSelector("[id='btn-cookie-allow']");
 
     public AccountPage(WebDriver driver) {
         super(driver);
     }
 
+    @Step
     public String getSuccessMessageText() {
         return driver.findElement(By.cssSelector(successMessage)).getText();
     }
@@ -31,6 +34,7 @@ public class AccountPage extends BasePage {
         Assert.assertEquals(getPageURL(), pageURL);
     }
 
+    @Step
     public void clickEditAccountLink() {
         driver.findElement(By.cssSelector(editAccountLinkSelector)).click();
     }
@@ -39,6 +43,12 @@ public class AccountPage extends BasePage {
         clickButtonByCss(wishlistsLinkSelector);
     }
 
+    @Step
+    public void clickAcceptCookieButton(){
+        super.clickAcceptCookieButton();
+    }
+
+    @Step
     public void clickLogoutLink() {
         driver.findElement(By.cssSelector(logoutLinkSelector)).click();
     }

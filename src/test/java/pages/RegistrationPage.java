@@ -23,7 +23,6 @@ public class RegistrationPage extends BasePage {
     private String passwordConfirmationErrorSelector = "password-confirmation-error";
     //    private String submitButtonSelector = "//*[@class=\"create-account-container\"]//*[@class=\"primary\"]"; //xpath
     private String submitButtonSelector = "#form-validate > div.actions-toolbar"; //css
-    private String goToLoginPage = "Intra in cont aici";
     String createAccountErrorSelector;
     String createAccountSuccessSelector;
 

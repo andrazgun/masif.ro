@@ -2,19 +2,16 @@ package tests;
 
 import pages.HomePage;
 import pages.LoginPage;
-import utils.AllureTestListener;
 import utils.GenericUtils;
 import io.qameta.allure.Feature;
 import org.testng.Assert;
 import org.testng.annotations.DataProvider;
-import org.testng.annotations.Listeners;
 import org.testng.annotations.Test;
 
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Iterator;
 
-@Listeners({AllureTestListener.class})
 @Feature("Login Negative Tests")
 public class LoginNegativeTest extends BaseTest {
 
@@ -40,7 +37,7 @@ public class LoginNegativeTest extends BaseTest {
         driver.get(baseUrl);
         HomePage homePage = new HomePage(driver);
         homePage.verifyPageURL();
-        homePage.goToLoginPage();
+        homePage.clickLoginIcon();
         LoginPage loginPage = new LoginPage(driver);
         loginPage.verifyPageURL();
         Assert.assertTrue(loginPage.getCheckboxNameSelector().isDisplayed());
@@ -56,7 +53,7 @@ public class LoginNegativeTest extends BaseTest {
         driver.get(baseUrl);
         HomePage homePage = new HomePage(driver);
         homePage.verifyPageURL();
-        homePage.goToLoginPage();
+        homePage.clickLoginIcon();
         LoginPage loginPage = new LoginPage(driver);
         loginPage.verifyPageURL();
         Assert.assertTrue(loginPage.getCheckboxNameSelector().isDisplayed());
@@ -71,7 +68,7 @@ public class LoginNegativeTest extends BaseTest {
         driver.get(baseUrl);
         HomePage homePage = new HomePage(driver);
         homePage.verifyPageURL();
-        homePage.goToLoginPage();
+        homePage.clickLoginIcon();
         LoginPage loginPage = new LoginPage(driver);
         loginPage.verifyPageURL();
         Assert.assertTrue(loginPage.getCheckboxNameSelector().isDisplayed());
@@ -90,7 +87,7 @@ public class LoginNegativeTest extends BaseTest {
         driver.get(baseUrl);
         HomePage homePage = new HomePage(driver);
         homePage.verifyPageURL();
-        homePage.goToLoginPage();
+        homePage.clickLoginIcon();
         LoginPage loginPage = new LoginPage(driver);
         loginPage.verifyPageURL();
         Assert.assertTrue(loginPage.getCheckboxNameSelector().isDisplayed());
@@ -106,7 +103,7 @@ public class LoginNegativeTest extends BaseTest {
         driver.get(baseUrl);
         HomePage homePage = new HomePage(driver);
         homePage.verifyPageURL();
-        homePage.goToLoginPage();
+        homePage.clickLoginIcon();
         LoginPage loginPage = new LoginPage(driver);
         loginPage.verifyPageURL();
         Assert.assertTrue(loginPage.getCheckboxNameSelector().isDisplayed());

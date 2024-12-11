@@ -5,34 +5,39 @@ import org.testng.Assert;
 import org.testng.annotations.Test;
 
 public class WishlistTest extends BaseTest {
+
+    private HomePage homePage = new HomePage(driver);
+    private WishlistPage wishlistPage = new WishlistPage(driver);
+    private LoginPage loginPage = new LoginPage(driver);
+    private ElectricToolsPage electricToolsPage = new ElectricToolsPage(driver);
+    private PolizorPage polizorPage = new PolizorPage(driver);
+    private AccountPage accountPage = new AccountPage(driver);
+
     @Test(
-            description = "empty wishlist test",
+            description = "Wishlist test for registered user",
             groups = {"Regression"},
             enabled = true
     )
     public void WishlistTest01() {
         driver.get(baseUrl);
-        HomePage homePage = new HomePage(driver);
         homePage.verifyPageURL();
-        homePage.goToWishlistPage();
-        WishlistPage wishlistPage = new WishlistPage(driver);
-        LoginPage loginPage = new LoginPage(driver);
+        homePage.clickAcceptCookieButton();
+        homePage.clickWishlistIcon();
         loginPage.login("agtest1@yopmail.com", "Test1234");
         wishlistPage.verifyPageURL();
         Assert.assertEquals(wishlistPage.getPageTitleSelectorText(), "Favorite");
-        Assert.assertEquals(wishlistPage.getMessageInfoEmptyText(),"Nu ai nici un articol în lista de dorințe");
         homePage.goToProductsNavigation();
         homePage.goToElectricTools();
-        ElectricToolsPage electricToolsPage = new ElectricToolsPage(driver);
         electricToolsPage.verifyPageURL();
-        Assert.assertEquals(electricToolsPage.getPageTitleSelectorText(),"Scule electrice");
-        electricToolsPage.goToPolizorPage();
-        PolizorPage polizorPage = new PolizorPage(driver);
+        Assert.assertEquals(electricToolsPage.getPageTitleSelectorText(), "Scule electrice");
+        electricToolsPage.clickPolizorCategory();
         polizorPage.verifyPageURL();
         Assert.assertEquals(polizorPage.getPageTitleSelectorText(), "Polizoare profesionale si semiprofesionale");
-        polizorPage.addProductToWishlist();
-        driver.get(baseUrl+wishlistPage.setPagePath());
-        wishlistPage.isProductComponentDisplayed();
-        Assert.assertEquals(wishlistPage.getMessageInfoEmptyText(),"Nu ai nici un articol în lista de dorințe");
+        polizorPage.clickAddToWishlistButton();
+        driver.get(wishlistPage.setPagePath());
+        wishlistPage.verifyPageURL();
+        Assert.assertTrue(wishlistPage.getWishlistComponent().isDisplayed());
+        wishlistPage.clickRemoveButton();
+        Assert.assertEquals(wishlistPage.getMessageInfoEmptyText(), "Nu ai nici un articol în lista de dorințe");
     }
 }

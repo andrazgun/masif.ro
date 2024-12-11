@@ -6,6 +6,8 @@ import org.openqa.selenium.WebDriver;
 import org.testng.annotations.*;
 import java.time.Duration;
 
+@Listeners({AllureTestListener.class})
+
 public class BaseTest {
     public static String browser = GenericUtils.getBrowserFromConfig(Constants.CONFIG_FILE);
     public static WebDriver driver = WebDriverFactory.getDriver(browser);
@@ -14,10 +16,10 @@ public class BaseTest {
     protected String dbHostname, dbPort, dbUser, dbPassword, dbSchema;
     protected Base64 base64 = new Base64();
 
-@BeforeClass
-public void clearCookies() {
-    driver.manage().deleteAllCookies();
-}
+    @BeforeClass
+    public void clearCookies() {
+        driver.manage().deleteAllCookies();
+    }
     @BeforeTest (alwaysRun = true)
     public void beforeTest() {
         dbHostname = ConfigUtils.getGenericValue(Constants.CONFIG_FILE, "dbHostname","");
@@ -33,7 +35,7 @@ public void clearCookies() {
 
     @AfterTest(enabled = false)
     public void afterTest() {
-            driver.quit();
+        driver.quit();
     }
 
     @AfterClass(enabled = false)
@@ -44,4 +46,6 @@ public void clearCookies() {
     }
 
 }
+
+
 

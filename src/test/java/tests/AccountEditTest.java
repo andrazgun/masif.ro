@@ -1,5 +1,6 @@
 package tests;
 
+import io.qameta.allure.Feature;
 import pages.AccountEditPage;
 import pages.AccountPage;
 import pages.HomePage;
@@ -8,6 +9,7 @@ import utils.GenericUtils;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 
+@Feature("Account: Editing first name, last name")
 public class AccountEditTest extends BaseTest {
     @Test(
             description = "Edit firstName and lastName",
@@ -18,7 +20,7 @@ public class AccountEditTest extends BaseTest {
         driver.get(baseUrl);
         HomePage homePage = new HomePage(driver);
         homePage.verifyPageURL();
-        homePage.goToLoginPage();
+        homePage.clickLoginIcon();
         LoginPage loginPage = new LoginPage(driver);
         loginPage.verifyPageURL();
         Assert.assertTrue(loginPage.getCheckboxNameSelector().isDisplayed());

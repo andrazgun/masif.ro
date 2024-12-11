@@ -1,19 +1,21 @@
 package pages;
 
+import io.qameta.allure.Step;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.testng.Assert;
 
 public class ElectricToolsPage extends HomePage {
-    private final String pagePath = "/scule-electrice/";
-//    private String pageURL = "https://masif.ro/scule-electrice/";
+    private final String pagePath = "scule-electrice/";
+    //    private String pageURL = "https://masif.ro/scule-electrice/";
     private String pageTitleSelector = "#page-title-heading > span"; //css
-    private String polizorPageSelector = "#maincontent > div.columns > div > ul > li:nth-child(1) > div > div.apptrian-subcategories-category-image > a";
+    private By polizorPageCategory = By.cssSelector("[class='apptrian-subcategories-category-wrapper']");
 
     public ElectricToolsPage(WebDriver driver) {
         super(driver);
     }
 
+    @Override
     public String setPagePath() {
         return super.pageURL + this.pagePath;
     }
@@ -24,11 +26,12 @@ public class ElectricToolsPage extends HomePage {
         Assert.assertEquals(getPageURL(), setPagePath());
     }
 
+    @Step
     public String getPageTitleSelectorText() {
         return driver.findElement(By.cssSelector(pageTitleSelector)).getText();
     }
 
-    public void goToPolizorPage() {
-        driver.findElement(By.cssSelector(polizorPageSelector)).click();
+    public void clickPolizorCategory() {
+        getElementFromList(polizorPageCategory).click();
     }
 }

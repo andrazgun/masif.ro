@@ -1,10 +1,14 @@
 package pages;
 
+import io.qameta.allure.Feature;
+import io.qameta.allure.Step;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.testng.Assert;
+import org.testng.annotations.Listeners;
+import utils.AllureTestListener;
 
 import static utils.BrowserUtils.submitButtonByCss;
 
@@ -29,6 +33,7 @@ public class AccountEditPage extends BasePage {
         Assert.assertEquals(getPageURL(), pageURL);
     }
 
+    @Step
     public void editAccount(String firstName, String lastName) {
 
         WebElement firstNameInput = driver.findElement(By.id(firstNameSelector));
