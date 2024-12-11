@@ -43,4 +43,5 @@ To ensure flexibility and coverage, the framework supports data-driven testing u
 ---
 
 Generate report: allure generate
+---
 View report: allure open
