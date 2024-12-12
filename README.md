@@ -43,7 +43,7 @@ To ensure flexibility and coverage, the framework supports data-driven testing u
 ---
 **Test Results**
 
-- Run in CLI mvn clean verify or manually by right-clicking on any of the xml suites and selecting Run
+- Run in CLI "mvn clean test" or manually by right-clicking on any of the xml suites and selecting Run
 - Reports are generated in target/allure-reports
-- To view the report run in CLI allure serve allure serve .\target\allure-results\
+- To view the report run in CLI "allure serve .\target\allure-results\"
 
