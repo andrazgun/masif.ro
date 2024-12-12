@@ -25,7 +25,6 @@ public class LoginPage extends BasePage {
     private By pageTitleSelector = By.cssSelector("[data-ui-id='page-title-wrapper']");
 
 
-
     public LoginPage(WebDriver driver) {
         super(driver);
     }
@@ -44,12 +43,14 @@ public class LoginPage extends BasePage {
         return driver.findElement(checkboxNameSelector);
     }
 
+    @Step
     public void clickCheckbox() {
         WebElement checkbox = getCheckboxNameSelector();
         Actions actions = new Actions(driver);
         actions.click(checkbox).build().perform();
     }
 
+    @Step
     public void login(String username, String password) {
         WebElement usernameInput = driver.findElement(By.name(usernameInputSelector));
         WebElement passwordInput = driver.findElement(By.name(passwordInputSelector));

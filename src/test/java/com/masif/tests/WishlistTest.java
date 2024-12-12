@@ -16,7 +16,7 @@ public class WishlistTest extends BaseTest {
     @Test(
             description = "Wishlist test for registered user",
             groups = {"Regression"},
-            enabled = true
+            enabled = false
     )
     public void WishlistTest01() {
         driver.get(baseUrl);

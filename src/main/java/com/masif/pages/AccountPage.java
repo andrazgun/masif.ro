@@ -38,12 +38,13 @@ public class AccountPage extends BasePage {
         driver.findElement(By.cssSelector(editAccountLinkSelector)).click();
     }
 
+    @Step
     public void clickWishlistsLink() {
         clickButtonByCss(wishlistsLinkSelector);
     }
 
     @Step
-    public void clickAcceptCookieButton(){
+    public void clickAcceptCookieButton() {
         super.clickAcceptCookieButton();
     }
 

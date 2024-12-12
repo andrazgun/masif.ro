@@ -3,14 +3,13 @@ package com.masif.tests.dataTests;
 import com.masif.pages.LoginPage;
 import com.masif.tests.BaseTest;
 import com.masif.tests.objectModels.LoginModel;
-import com.masif.utils.AllureTestListener;
 import com.masif.utils.Tools;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import io.qameta.allure.Epic;
 import io.qameta.allure.Feature;
+import io.qameta.allure.Step;
 import org.testng.Assert;
 import org.testng.annotations.DataProvider;
-import org.testng.annotations.Listeners;
 import org.testng.annotations.Test;
 
 import java.io.File;
@@ -20,7 +19,6 @@ import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Iterator;
 
-@Listeners({AllureTestListener.class})
 @Epic("Regression Tests")
 @Feature("Login Negative Data Tests")
 public class LoginNegativeDataTests extends BaseTest {
@@ -40,6 +38,7 @@ public class LoginNegativeDataTests extends BaseTest {
         return dp.iterator();
     }
 
+    @Step("Login negative test with data from JSON")
     @Test(
             dataProvider = "jsonDataProvider",
             description = "Login negative test with JSON data provider",
@@ -89,6 +88,7 @@ public class LoginNegativeDataTests extends BaseTest {
         return Tools.replaceElements(resultSet.getString(element), "''", "");
     }
 
+    @Step("Login negative test with data from MySQL DB")
     @Test(
             dataProvider = "SQLDataProvider",
             groups = {"Regression"},
@@ -105,6 +105,7 @@ public class LoginNegativeDataTests extends BaseTest {
         System.out.println(lm);
     }
 
+    @Step
     private void loginActions(LoginModel lm) {
         LoginPage loginPage = new LoginPage(driver);
 
@@ -113,7 +114,6 @@ public class LoginNegativeDataTests extends BaseTest {
         driver.get(baseUrl + loginPage.setPagePath());
         System.out.println(baseUrl + loginPage.setPagePath());
 
-//        login
         loginPage.login(lm.getAccount().getEmail(), lm.getAccount().getPassword()); //getter from LoginModel and from AccountModel
 
         String expectedEmailErr = lm.getEmailError();
@@ -121,7 +121,6 @@ public class LoginNegativeDataTests extends BaseTest {
 
         System.out.println("Verify expected errors present:\n Expected email error: " + expectedEmailErr);
         Assert.assertTrue(loginPage.checkErr(expectedEmailErr, "emailErr"));
-
         System.out.println("Expected password error: " + expectedPassErr);
         Assert.assertTrue(loginPage.checkErr(expectedPassErr, "passErr"));
     }

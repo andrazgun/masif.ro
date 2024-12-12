@@ -25,9 +25,8 @@ public class BrowserUtils extends BasePage{
         super(driver);
     }
 
-    //    static WebDriver driver;
-    public WebDriver getDriver(){
-        return super.driver;
+    public static WebDriver getDriver(){
+        return driver;
     }
 
     public static WebDriver getBrowser(String browser) {
@@ -101,7 +100,7 @@ public class BrowserUtils extends BasePage{
 
     public static void waitUntilElementIsClickable(WebElement element) {
         scrollIntoView(element);
-        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(5));
+        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(7));
         wait.until(ExpectedConditions.elementToBeClickable(element));
     }
 

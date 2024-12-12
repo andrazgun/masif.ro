@@ -19,7 +19,7 @@ public class CartTests extends BaseTest {
         homePage.verifyPageURL();
         homePage.clickCartIcon();
         Assert.assertEquals(homePage.getEmptyCartSelectorText(),
-                "Nu ai niciun articol în coșul de cumpărături");
+                "Nu ai niciun articol în coșul de cumpărăturii");
         homePage.clickMinicartCloseButton();
         Assert.assertFalse(homePage.minicartCloseButton().isDisplayed());
     }

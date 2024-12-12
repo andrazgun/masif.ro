@@ -1,5 +1,6 @@
 package com.masif.pages;
 
+import io.qameta.allure.Step;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.testng.Assert;
@@ -32,11 +33,13 @@ public class PolizorPage extends BasePage {
         return driver.findElement(By.cssSelector(pageTitleSelector)).getText();
     }
 
+    @Step
     public void clickAddToWishlistButton() {
         waitUntilElementIsVisible(driver.findElement(addToWishlistButton));
         getElementFromList(addToWishlistButton).click();
     }
 
+    @Step
     public void addProductToCart() {
         driver.findElement(By.cssSelector(addProductToCartSelector)).click();
     }

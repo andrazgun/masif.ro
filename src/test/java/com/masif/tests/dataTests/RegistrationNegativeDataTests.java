@@ -3,20 +3,17 @@ package com.masif.tests.dataTests;
 import com.masif.pages.RegistrationPage;
 import com.masif.tests.BaseTest;
 import com.masif.tests.objectModels.RegistrationModel;
-import com.masif.utils.AllureTestListener;
 import com.masif.utils.Tools;
 import io.qameta.allure.Epic;
 import io.qameta.allure.Feature;
 import org.testng.Assert;
 import org.testng.annotations.DataProvider;
-import org.testng.annotations.Listeners;
 import org.testng.annotations.Test;
 
 import java.sql.*;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Iterator;
-@Listeners({AllureTestListener.class})
 @Epic("Regression Tests")
 @Feature("Registration Negative Data Tests")
 public class RegistrationNegativeDataTests extends BaseTest {

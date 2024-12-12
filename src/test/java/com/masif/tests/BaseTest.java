@@ -7,7 +7,6 @@ import org.testng.annotations.*;
 import java.time.Duration;
 
 @Listeners({AllureTestListener.class})
-
 public class BaseTest {
     public static String browser = GenericUtils.getBrowserFromConfig(Constants.CONFIG_FILE);
     public static WebDriver driver = WebDriverFactory.getDriver(browser);

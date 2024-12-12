@@ -56,7 +56,6 @@ public class HomePage extends BasePage {
         log.info("Click Cart icon");
     }
 
-    @Step
     public WebElement minicartCloseButton() {
         return driver.findElement(By.cssSelector(minicartCloseButton));
     }

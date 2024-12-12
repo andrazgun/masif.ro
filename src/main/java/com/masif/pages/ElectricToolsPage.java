@@ -25,11 +25,11 @@ public class ElectricToolsPage extends HomePage {
         Assert.assertEquals(getPageURL(), setPagePath());
     }
 
-    @Step
     public String getPageTitleSelectorText() {
         return driver.findElement(By.cssSelector(pageTitleSelector)).getText();
     }
 
+    @Step
     public void clickPolizorCategory() {
         getElementFromList(polizorPageCategory).click();
     }

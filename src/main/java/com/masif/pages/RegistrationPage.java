@@ -1,5 +1,6 @@
 package com.masif.pages;
 
+import io.qameta.allure.Step;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -100,6 +101,7 @@ public class RegistrationPage extends BasePage {
         return passwordErrorText.getText();
     }
 
+    @Step
     public boolean checkErr(String expectedErr, String errorType) {
         if (errorType.equalsIgnoreCase("firstNameErr")) {
             if (expectedErr.length() > 0) { // if text is displayed, execute if code block
@@ -113,10 +115,10 @@ public class RegistrationPage extends BasePage {
             } else return true;
 
         } else if (errorType.equalsIgnoreCase("emailErr")) {
-                    if (expectedErr.length() > 0) { // if text is displayed, execute if code block
-                        System.out.println("Actual email error: " + getEmailErrorText());
-                        return expectedErr.equals(getEmailErrorText());
-                    } else return true;
+            if (expectedErr.length() > 0) { // if text is displayed, execute if code block
+                System.out.println("Actual email error: " + getEmailErrorText());
+                return expectedErr.equals(getEmailErrorText());
+            } else return true;
         } else if (errorType.equalsIgnoreCase("passErr")) {
             if (expectedErr.length() > 0) {
                 System.out.println("Actual password error:" + getPasswordErrorText());
