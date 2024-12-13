@@ -29,6 +29,7 @@ public class HomePage extends BasePage {
     }
 
     @Override
+    @Step
     public void verifyPageURL() {
         log.info("Assert that page URL is: {}", getPageURL());
         Assert.assertEquals(getPageURL(), pageURL);

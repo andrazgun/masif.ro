@@ -1,6 +1,7 @@
 package com.masif.tests;
 
 import io.qameta.allure.Feature;
+import io.qameta.allure.Step;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 import com.masif.pages.ElectricToolsPage;
@@ -9,6 +10,7 @@ import com.masif.pages.HomePage;
 @Feature("Cart tests")
 public class CartTests extends BaseTest {
 
+    @Step
     @Test(
             description = "Empty cart test for Guest",
             groups = {"Smoke"}
@@ -24,6 +26,7 @@ public class CartTests extends BaseTest {
         Assert.assertFalse(homePage.minicartCloseButton().isDisplayed());
     }
 
+    @Step
     @Test(
             description = "Empty cart test for Guest",
             groups = {"Smoke"}

@@ -31,7 +31,7 @@ public class LoginNegativeTest extends BaseTest {
             description = "Login negative test with iterator data provider",
             enabled = true,
             dataProvider = "loginDataProvider",
-            groups = {"Smoke"}
+            groups = {"Regression"}
     )
     public void LoginTestWithDataProvider(String username, String password, String assertMessage) {
         driver.get(baseUrl);
@@ -48,7 +48,9 @@ public class LoginNegativeTest extends BaseTest {
     }
 
     @Test(
-            description = "Negative login test with valid email, valid password but without existing account")
+            description = "Negative login test with valid email, valid password but without existing account",
+            groups = {"Regression"}
+    )
     public void LoginNegativeTest01() {
         driver.get(baseUrl);
         HomePage homePage = new HomePage(driver);
@@ -98,7 +100,7 @@ public class LoginNegativeTest extends BaseTest {
 
     @Test(
             description = "Negative login test with valid email, valid password but without existing account",
-            groups = {"Smoke"})
+            groups = {"Regression"})
     public void LoginNegativeTest04() {
         driver.get(baseUrl);
         HomePage homePage = new HomePage(driver);

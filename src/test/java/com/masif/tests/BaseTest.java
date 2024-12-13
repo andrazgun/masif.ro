@@ -1,9 +1,11 @@
 package com.masif.tests;
 
 import com.masif.utils.*;
+import io.qameta.allure.Step;
 import org.apache.commons.codec.binary.Base64;
 import org.openqa.selenium.WebDriver;
 import org.testng.annotations.*;
+
 import java.time.Duration;
 
 @Listeners({AllureTestListener.class})
@@ -15,28 +17,34 @@ public class BaseTest {
     protected String dbHostname, dbPort, dbUser, dbPassword, dbSchema;
     protected Base64 base64 = new Base64();
 
+    @Step
     @BeforeClass
     public void clearCookies() {
         driver.manage().deleteAllCookies();
     }
-    @BeforeTest (alwaysRun = true)
+
+    @BeforeTest(alwaysRun = true)
     public void beforeTest() {
-        dbHostname = ConfigUtils.getGenericValue(Constants.CONFIG_FILE, "dbHostname","");
-        dbUser = ConfigUtils.getGenericValue(Constants.CONFIG_FILE, "dbUser","");
-        dbPassword = ConfigUtils.getGenericValue(Constants.CONFIG_FILE, "dbPassword","");
-        dbPort = ConfigUtils.getGenericValue(Constants.CONFIG_FILE, "dbPort","");
-        dbSchema = ConfigUtils.getGenericValue(Constants.CONFIG_FILE, "dbSchema","");
+        dbHostname = ConfigUtils.getGenericValue(Constants.CONFIG_FILE, "dbHostname", "");
+        dbUser = ConfigUtils.getGenericValue(Constants.CONFIG_FILE, "dbUser", "");
+        dbPassword = ConfigUtils.getGenericValue(Constants.CONFIG_FILE, "dbPassword", "");
+        dbPort = ConfigUtils.getGenericValue(Constants.CONFIG_FILE, "dbPort", "");
+        dbSchema = ConfigUtils.getGenericValue(Constants.CONFIG_FILE, "dbSchema", "");
         driver.manage().window().maximize();
+        AllureTestListener.setDriver(driver);
     }
+
     public void implicitWait() {
         driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(5));
     }
 
+    @Step
     @AfterTest(enabled = false)
     public void afterTest() {
         driver.quit();
     }
 
+    @Step
     @AfterClass(enabled = false)
     public void closeDriver() {
         if (driver != null) {
