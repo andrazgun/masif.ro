@@ -31,7 +31,6 @@ public class BaseTest {
         dbPort = ConfigUtils.getGenericValue(Constants.CONFIG_FILE, "dbPort", "");
         dbSchema = ConfigUtils.getGenericValue(Constants.CONFIG_FILE, "dbSchema", "");
         driver.manage().window().maximize();
-        AllureTestListener.setDriver(driver);
     }
 
     public void implicitWait() {

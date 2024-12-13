@@ -65,7 +65,7 @@ public class LoginNegativeTest extends BaseTest {
 
     @Test(
             description = "Negative login test with empty email, empty password",
-            groups = {"Smoke"})
+            groups = {"Regression"})
     public void LoginNegativeTest02() {
         driver.get(baseUrl);
         HomePage homePage = new HomePage(driver);
@@ -83,7 +83,7 @@ public class LoginNegativeTest extends BaseTest {
 
     @Test(
             description = "Negative login test with valid email, empty password",
-            groups = {"Smoke"}
+            groups = {"Regression"}
     )
     public void LoginNegativeTest03() {
         driver.get(baseUrl);

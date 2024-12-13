@@ -12,7 +12,7 @@ import org.testng.annotations.Test;
 public class RegistrationNegativeTest extends BaseTest {
     @Test(
             description = "Negative registration test with invalid email and invalid password",
-            groups = {"Smoke"}
+            groups = {"Regression"}
     )
     public void RegistrationTest01() {
         RegistrationPage registrationPage = new RegistrationPage(driver);
@@ -31,7 +31,7 @@ public class RegistrationNegativeTest extends BaseTest {
 
     @Test(
             description = "Negative registration test with invalid password",
-            groups = {"Smoke"}
+            groups = {"Regression"}
     )
     public void RegistrationTest02() {
         RegistrationPage registrationPage = new RegistrationPage(driver);
@@ -50,7 +50,7 @@ public class RegistrationNegativeTest extends BaseTest {
 
     @Test(
             description = "Negative registration test with empty data",
-            groups = {"Smoke"}
+            groups = {"Regression"}
     )
     public void RegistrationTest03() {
         RegistrationPage registrationPage = new RegistrationPage(driver);

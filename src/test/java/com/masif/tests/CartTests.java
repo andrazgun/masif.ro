@@ -9,6 +9,9 @@ import com.masif.pages.HomePage;
 
 @Feature("Cart tests")
 public class CartTests extends BaseTest {
+    private HomePage homePage = new HomePage(driver);
+    private ElectricToolsPage electricToolsPage = new ElectricToolsPage(driver);
+
 
     @Step
     @Test(
@@ -17,7 +20,6 @@ public class CartTests extends BaseTest {
     )
     public void CartEmptyTest() {
         driver.get(baseUrl);
-        HomePage homePage = new HomePage(driver);
         homePage.verifyPageURL();
         homePage.clickCartIcon();
         Assert.assertEquals(homePage.getEmptyCartSelectorText(),
@@ -32,10 +34,8 @@ public class CartTests extends BaseTest {
             groups = {"Smoke"}
     )
     public void CartNotEmptyTest() {
-        ElectricToolsPage electricToolsPage = new ElectricToolsPage(driver);
         driver.get(electricToolsPage.setPagePath());
         electricToolsPage.verifyPageURL();
-
     }
 
 }
