@@ -39,7 +39,7 @@ public class LoginPositiveTest extends BaseTest {
     @Test(
             dataProvider = "jsonDataProvider",
             description = "Login positive test with JSON data provider",
-            groups = {"Smoke"}
+            groups = {"Regression"}
     )
     public void loginPositiveWithJsonDataProviderTest(LoginModel lm) {
         printData(lm);

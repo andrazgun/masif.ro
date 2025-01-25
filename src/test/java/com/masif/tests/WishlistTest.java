@@ -1,6 +1,7 @@
 package com.masif.tests;
 
 import com.masif.pages.*;
+import io.qameta.allure.Step;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 
@@ -13,6 +14,7 @@ public class WishlistTest extends BaseTest {
     private PolizorPage polizorPage = new PolizorPage(driver);
     private AccountPage accountPage = new AccountPage(driver);
 
+    @Step
     @Test(
             description = "Wishlist test for registered user",
             groups = {"Regression"},
