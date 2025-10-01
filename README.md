@@ -1,6 +1,7 @@
--WORK IN PROGRESS-
+### Description
 
-Test Automation Project on www.masif.ro
+The main scope is the framework structure rather than actual testing, therefore the number of tests in the feature files
+is small.
 
 ---
 
