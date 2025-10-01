@@ -12,7 +12,6 @@ public class CartTests extends BaseTest {
     private HomePage homePage = new HomePage(driver);
     private ElectricToolsPage electricToolsPage = new ElectricToolsPage(driver);
 
-
     @Step
     @Test(
             description = "Empty cart test for Guest",
@@ -37,5 +36,4 @@ public class CartTests extends BaseTest {
         driver.get(electricToolsPage.setPagePath());
         electricToolsPage.verifyPageURL();
     }
-
 }

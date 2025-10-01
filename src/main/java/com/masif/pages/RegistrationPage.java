@@ -27,7 +27,6 @@ public class RegistrationPage extends BasePage {
     String createAccountErrorSelector;
     String createAccountSuccessSelector;
 
-
     public RegistrationPage(WebDriver driver) {
         super(driver);
     }

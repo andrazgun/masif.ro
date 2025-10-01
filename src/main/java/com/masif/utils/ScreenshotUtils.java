@@ -14,7 +14,6 @@ import java.util.Date;
 public class ScreenshotUtils {
 
     public static String captureScreenshot(WebDriver driver, String testName) {
-//        Timestamp timestamp = new Timestamp(System.currentTimeMillis());
         String timestamp = new SimpleDateFormat("yyyyMMddHHmmss").format(new Date());
         File screenshotFile = ((TakesScreenshot) driver).getScreenshotAs(OutputType.FILE);
         String destinationPath = Constants.SCREENSHOT_DIRECTORY

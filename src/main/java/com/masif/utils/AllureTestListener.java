@@ -39,5 +39,4 @@ public class AllureTestListener implements ITestListener {
     public void onTestSkipped(ITestResult result) {
         // Optional: Add logic for skipped tests
     }
-
 }

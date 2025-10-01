@@ -9,7 +9,6 @@ import org.testng.Assert;
 
 import static com.masif.utils.BrowserUtils.submitButtonByCss;
 
-//Page Object Model design pattern
 public class LoginPage extends BasePage {
     private final String pagePath = "/customer/account/login/";
     private String pageURL = "https://masif.ro/customer/account/login/";

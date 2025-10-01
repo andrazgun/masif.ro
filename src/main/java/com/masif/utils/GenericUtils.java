@@ -8,7 +8,6 @@ import java.util.Properties;
 
 public class GenericUtils {
 
-    //random String method
         public static String createRandomStringTwo(int stringLength) {
         return RandomStringUtils.randomAlphanumeric(stringLength);
     }

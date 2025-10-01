@@ -26,15 +26,14 @@ public class LoginNegativeDataTests extends BaseTest {
     //    JSON Data Provider
     @DataProvider(name = "jsonDataProvider")
     public Iterator<Object[]> jsonDpCollection() throws IOException {
-        Collection<Object[]> dp = new ArrayList<>(); //list of objects
-//      here is starting deserialization of json into LoginModel object
-        ObjectMapper objectMapper = new ObjectMapper(); //mapping the json with ObjectMapper
+        Collection<Object[]> dp = new ArrayList<>();
+        ObjectMapper objectMapper = new ObjectMapper();
 
         File f = new File("src\\test\\resources\\data\\loginNegativeTestData.json");
-        LoginModel[] lms = objectMapper.readValue(f, LoginModel[].class); //mapping the file data as a list [] of LoginModel class
+        LoginModel[] lms = objectMapper.readValue(f, LoginModel[].class);
 
         for (LoginModel lm : lms)
-            dp.add(new Object[]{lm}); //create an object that will add objects in data provider
+            dp.add(new Object[]{lm});
         return dp.iterator();
     }
 
@@ -52,7 +51,7 @@ public class LoginNegativeDataTests extends BaseTest {
     //    mySQL Database Data Provider
     @DataProvider(name = "SQLDataProvider")
     public Iterator<Object[]> SQLDpCollection() {
-        //        get DB connection settings
+
         System.out.println("Use dbHostname:" + dbHostname);
         System.out.println("Use dbUser:" + dbUser);
         System.out.println("Use dbPort:" + dbPort);
@@ -80,10 +79,6 @@ public class LoginNegativeDataTests extends BaseTest {
         return dp.iterator();
     }
 
-    //    Method designed to:
-//    Fetch a string value from a specified column of a database result set.
-//    Clean up that string by removing double single quotes.
-//    Return the cleaned string.
     private String getEscapedElement(ResultSet resultSet, String element) throws SQLException {
         return Tools.replaceElements(resultSet.getString(element), "''", "");
     }
@@ -99,8 +94,6 @@ public class LoginNegativeDataTests extends BaseTest {
         loginActions(lm);
     }
 
-    //    Utility methods
-//methods used to show info related to login model
     private void printData(LoginModel lm) {
         System.out.println(lm);
     }
@@ -109,7 +102,6 @@ public class LoginNegativeDataTests extends BaseTest {
     private void loginActions(LoginModel lm) {
         LoginPage loginPage = new LoginPage(driver);
 
-//        open login page
         System.out.println("Open login page");
         driver.get(baseUrl + loginPage.setPagePath());
         System.out.println(baseUrl + loginPage.setPagePath());

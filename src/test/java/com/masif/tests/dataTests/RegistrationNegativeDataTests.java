@@ -21,7 +21,7 @@ public class RegistrationNegativeDataTests extends BaseTest {
     //    mySQL Database Data Provider
     @DataProvider(name = "SQLDataProvider")
     public Iterator<Object[]> SQLDpCollection() {
-        //        get DB connection settings
+
         System.out.println("Use dbHostname:" + dbHostname);
         System.out.println("Use dbUser:" + dbUser);
         System.out.println("Use dbPort:" + dbPort);
@@ -56,10 +56,6 @@ public class RegistrationNegativeDataTests extends BaseTest {
         return dp.iterator();
     }
 
-    //    Method designed to:
-//    Fetch a string value from a specified column of a database result set.
-//    Clean up that string by removing double single quotes.
-//    Return the cleaned string.
     private String getEscapedElement(ResultSet resultSet, String element) throws SQLException {
         return Tools.replaceElements(resultSet.getString(element), "''", "");
     }
@@ -74,26 +70,23 @@ public class RegistrationNegativeDataTests extends BaseTest {
         registrationActions(rm);
     }
 
-    //    Utility methods
-//methods used to show info related to login model
     private void printData(RegistrationModel rm) {
         System.out.println(rm);
     }
 
     private void registrationActions(RegistrationModel rm) {
         RegistrationPage registrationPage = new RegistrationPage(driver);
-//        open registration page
+
         System.out.println("Open registration page");
         driver.get(baseUrl + registrationPage.setPagePath());
         System.out.println(baseUrl + registrationPage.setPagePath());
 
-//        register
         registrationPage.createAccount
                 (
                     rm.getFirstName(), rm.getLastName(),
                     rm.getAccount().getEmail(), rm.getAccount().getPassword(),
                     rm.getReEnterPassword()
-                ); //getter from RegistrationModel and from AccountModel
+                );
         String expectedFirstNameErr = rm.getFirstNameError();
         String expectedLastNameErr = rm.getLastNameError();
         String expectedEmailErr = rm.getEmailError();
